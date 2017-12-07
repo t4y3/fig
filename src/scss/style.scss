@@ -1,0 +1,14 @@
+// @see https://github.com/webpack-contrib/sass-loader#imports
+@import "~reset-css/reset.css";
+@import '~highlight.js/styles/github.css';
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+* { box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 62.5%;
+    font-family: 'Inconsolata', monospace;
+}

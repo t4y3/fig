@@ -1,8 +1,14 @@
 # Fig
 Fig - library for gallery of Riot tag
 
+## Capture
+<img src="https://user-images.githubusercontent.com/9010553/33793604-60fbb9f8-dcfd-11e7-96a6-3715fa671760.png" width="500" style="display:block;margin:0 auto;">
+
 ## Description
-- Mount the custom tag specified in tags in the iframe.
+Mount the custom tag specified in tags in the iframe.  
+It is not for preview and development.  
+It is for displaying and confirming the custom tag created.  
+Use it like a style guide.
 
 ## Install
 ```bash

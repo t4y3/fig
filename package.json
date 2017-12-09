@@ -6,7 +6,7 @@
     "fig": "index.js"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --optimize-minimize",
     "watch": "webpack -w",
     "lint:js": "eslint 'src/**/*+(.tag|.js)'"
   },

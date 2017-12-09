@@ -26,6 +26,7 @@ fig-app
         flex: 0 0 250px;
         min-width: 250px;
         border-right: 1px solid #c1c1c1;
+        position: relative;
       }
 
       .app-right {

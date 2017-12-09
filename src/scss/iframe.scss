@@ -1,0 +1,12 @@
+// @see https://github.com/webpack-contrib/sass-loader#imports
+@import "~reset-css/reset.css";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}

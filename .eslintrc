@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    "eslint-plugin-script-tags"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-var": 2,
+    "no-unused-vars": [2, { "args": "none" }],
+    "arrow-spacing": 2,
+    "no-useless-escape": 0,
+    "no-empty": ["error", {"allowEmptyCatch": true}],
+    "no-extra-boolean-cast": 0
+  },
+  "globals": {
+    "opts": true,
+    "riot": true,
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

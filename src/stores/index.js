@@ -6,7 +6,7 @@ let store = new riotx.Store({
   state: {
     tags: [],
     activeTag: '',
-    bundleSrc: '',
+    includes: '',
     colors: [],
     codes: {},
   },
@@ -22,7 +22,7 @@ let store = new riotx.Store({
     all: (context, data) => {
       context.state.tags = data.tags;
       context.state.activeTag = data.activeTag;
-      context.state.bundleSrc = data.bundleSrc;
+      context.state.includes = data.includes;
       context.state.colors = data.colors;
       context.state.codes = data.codes;
       return [ACTIONS.UPDATED_ALL];
@@ -42,8 +42,8 @@ let store = new riotx.Store({
     [GETTERS.ACTIVE_TAG]: context => {
       return context.state.activeTag;
     },
-    [GETTERS.BUNDLE_SRC]: context => {
-      return context.state.bundleSrc;
+    [GETTERS.INCLUDES]: context => {
+      return context.state.includes;
     },
     [GETTERS.COLORS]: context => {
       return context.state.colors;

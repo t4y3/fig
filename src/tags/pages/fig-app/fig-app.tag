@@ -64,7 +64,7 @@ fig-app
       store.action(ACTIONS.UPDATE_ALL, {
         tags: opts.tags,
         activeTag: tag,
-        bundleSrc: opts.bundleSrc,
+        includes: opts.includes,
         colors: opts.colors,
         codes: opts.codes
       });

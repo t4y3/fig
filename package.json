@@ -26,8 +26,7 @@
   "homepage": "https://github.com/t4y3/fig#readme",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
-    "freeport": "^1.0.5"
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "buble": "^0.18.0",

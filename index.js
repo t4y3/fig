@@ -5,13 +5,8 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var ejs = require('ejs');
-
-// var freeport = require('freeport');
 var port = 8080;
-// freeport(function(err, p) {
-//   if (err) throw err
-//   port = p;
-// })
+
 
 
 app.engine('ejs', ejs.renderFile);
@@ -33,7 +28,7 @@ for (var i = 0, len = config.tags.length; i < len; i++) {
 Promise.all(promises).then(function() {
   app.get('/', function(req, res){
     res.render('index.ejs', {
-      bundle: config.bundle,
+      includes: config.includes,
       tags: tagNames,
       codes: codes,
       colors: config.colors || []

@@ -7,7 +7,7 @@ fig-view
         ref="{ item }"
         width="100%"
         sandbox="allow-scripts allow-same-origin"
-        srcdoc="<script type=\"text/javascript\" src=\"{ bundleSrc }\"></script><{ item }></{ item }>"
+        srcdoc="{ srcTemplates[i] }"
         show="{ item == activeTag }"
         onload="{ loadedCallback }"
         onclick="{ clickHander }")
@@ -68,8 +68,13 @@ fig-view
       this.allTags = store.getter(GETTERS.TAGS);
       this.bgColors = store.getter(GETTERS.COLORS);
       this.activeTag = store.getter(GETTERS.ACTIVE_TAG);
-      this.bundleSrc = store.getter(GETTERS.BUNDLE_SRC);
+      this.includes = store.getter(GETTERS.INCLUDES);
       this.bgIndex = 0;
+      this.srcTemplates = [];
+      for (let i = 0, len = this.allTags.length; i < len; i++) {
+        this.srcTemplates[i] = getSrcTemplate(this.allTags[i]);
+      }
+
 
       // change backgroundColor
       if (this.bgColors.length) {
@@ -79,6 +84,38 @@ fig-view
         });
       }
     });
+
+    /**
+     * Get srcdoc
+     * @param {string} tag Tag name
+     * @return
+     *
+     */
+    const getSrcTemplate = (tag) => {
+      let css = '';
+      let js = '';
+      if (this.includes.css) {
+        for (let i = 0, len = this.includes.css.length; i < len; i++) {
+          css += `<link rel="stylesheet" href="${ this.includes.css[i] }">`;
+        }
+      }
+      for (let i = 0, len = this.includes.js.length; i < len; i++) {
+        js += `<scr${'i'}pt type="text/javascript" src="${ this.includes.js[i] }"></scr${'i'}pt>`;
+      }
+      return `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <title>${ tag }</title>
+            ${ css }
+            ${ js }
+          </head>
+          <body>
+            <${ tag }></${ tag }>
+          </body>
+        </html>`;
+    };
 
     /**
      * Change background-color

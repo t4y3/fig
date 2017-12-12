@@ -28,8 +28,15 @@ Set the following rule in `fig.config.js`.
 
 ```js
 module.exports = {
-  'bundle': 'dist/bundle.js',
-  'colors': [
+  includes: {
+    css: [
+      'http://cdn.jsdelivr.net/blazecss/1.1.3/blaze.min.css'
+    ],
+    js: [
+      'dist/bundle.js'
+    ],
+  },
+  colors: [
     '#fff',
     '#f00',
   ],
@@ -39,8 +46,9 @@ module.exports = {
   ]
 };
 ```
-- `bundle` - Path of bundled file
-  - Specify bundle.js containing the custom tag you want to display
+- `includes` - files required to display custom tags
+  - A bundled js file containing custom tags is required
+  - `css` is not mandatory
 - `colors` - Background color
   - Specified in Hex or rgb format
 - `tags` - Path of tag file

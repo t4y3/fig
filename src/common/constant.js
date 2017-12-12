@@ -11,7 +11,7 @@ export const GETTERS = {
   ALL: 'ALL',
   TAGS: 'TAGS',
   ACTIVE_TAG: 'ACTIVE_TAG',
-  BUNDLE_SRC: 'BUNDLE_SRC',
+  INCLUDES: 'INCLUDES',
   COLORS: 'COLORS',
   CODES: 'CODES',
 };

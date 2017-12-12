@@ -10,6 +10,7 @@
       var figTags = [];
       var figCodes = {};
       var figColors = [];
+      var figIncludes = JSON.parse('<%- JSON.stringify(includes) %>');
 
       <% for (var i = 0; i < tags.length; i++) { %>
         figTags.push('<%= tags[i] %>');
@@ -21,7 +22,7 @@
       <% } %>
     </script>
 
-    <fig-app tags="{ figTags }" codes="{ figCodes }" bundle-src="<%= bundle %>" colors="{ figColors }"></fig-app>
+    <fig-app tags="{ figTags }" codes="{ figCodes }" includes="{ figIncludes }" colors="{ figColors }"></fig-app>
 
   </body>
 </html>

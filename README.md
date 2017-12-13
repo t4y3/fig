@@ -1,8 +1,11 @@
 # Fig
 Fig - library for gallery of Riot tag
 
+## Demo
+- https://fig-sample.appspot.com/
+
 ## Capture
-<img src="https://user-images.githubusercontent.com/9010553/33793604-60fbb9f8-dcfd-11e7-96a6-3715fa671760.png" width="500" style="display:block;margin:0 auto;">
+![fig-sample appspot com_](https://user-images.githubusercontent.com/9010553/33953624-edb31020-e078-11e7-95fe-a34d8edb93b6.png)
 
 ## Description
 Mount the custom tag specified in tags in the iframe.  

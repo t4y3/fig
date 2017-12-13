@@ -5,7 +5,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var ejs = require('ejs');
-var port = 8080;
+var port = process.env.PORT || 8080;
 
 
 

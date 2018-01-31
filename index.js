@@ -6,9 +6,12 @@ var express = require('express');
 var app = express();
 var ejs = require('ejs');
 var port = process.env.PORT || 8080;
+var bs = require("browser-sync").create();
 
 
-
+/**
+ * Setting Express
+ */
 app.engine('ejs', ejs.renderFile);
 app.set('views', __dirname + '/dist');
 // staticファイルの設定
@@ -33,7 +36,6 @@ Promise.all(promises).then(function() {
       codes: codes,
       colors: config.colors || []
     });
-
   });
 
   var server = app.listen(port, function(){
@@ -42,6 +44,11 @@ Promise.all(promises).then(function() {
     console.log(' Local: http://localhost:' + port);
     console.log('-------------------------------------');
   });
+
+  // .init starts the server
+  bs.init({ port: '8081', proxy: 'http://localhost:8080' });
+  // Listen to change events on HTML and reload
+  bs.watch(process.cwd() + '/' + config.includes.js).on("change", bs.reload);
 });
 
 

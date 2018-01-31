@@ -1,5 +1,6 @@
 # Fig
-Fig - library for gallery of Riot tag
+Fig - library for gallery of Riot tag  
+https://www.npmjs.com/package/@t4y3/fig
 
 ## Demo
 - https://fig-sample.appspot.com/
@@ -61,6 +62,7 @@ module.exports = {
 - `command + shift + ←` - Toggle Tree View
 - `commnad + shift + ↓` - Toggle Code View
 - `commnad + shift + →` - Change BgColor
+- `↑ or ↓` - Change View Custom Tag
 
 
 ## Licence

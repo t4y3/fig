@@ -6,7 +6,7 @@ fig-app
       fig-header
       .app-right-top
         fig-view
-      .app-right-bottom(show="{ isShowCodes }")
+      //.app-right-bottom(show="{ isShowCodes }")
         fig-code
 
   style(type="scss").
@@ -70,7 +70,7 @@ fig-app
         activeTag: tag,
         includes: FIG_CONFIG.includes,
         colors: FIG_CONFIG.colors,
-        codes: opts.codes
+        codes: []
       });
 
       this.isShowTree = true;
@@ -81,9 +81,9 @@ fig-app
         this.isShowTree = !this.isShowTree;
         this.update();
       });
-      // toggle codes
-      Mousetrap.bind(KEY_EVENTS.TOGGLE_CODES, () => {
-        this.isShowCodes = !this.isShowCodes;
-        this.update();
-      });
+      // // toggle codes
+      // Mousetrap.bind(KEY_EVENTS.TOGGLE_CODES, () => {
+      //   this.isShowCodes = !this.isShowCodes;
+      //   this.update();
+      // });
     });

@@ -60,12 +60,16 @@ fig-app
       });
 
       // Update App setting
-      let tag = queryString.parse(location.hash).tag || opts.tags[0];
+      let tags = [];
+      for (let i = 0; i < FIG_CONFIG.tags.length; i++) {
+        tags[i] = FIG_CONFIG.tags[i].match(/.*\/(.*)\.tag/)[1];
+      }
+      let tag = queryString.parse(location.hash).tag || tags[0];
       store.action(ACTIONS.UPDATE_ALL, {
-        tags: opts.tags,
+        tags: tags,
         activeTag: tag,
-        includes: opts.includes,
-        colors: opts.colors,
+        includes: FIG_CONFIG.includes,
+        colors: FIG_CONFIG.colors,
         codes: opts.codes
       });
 

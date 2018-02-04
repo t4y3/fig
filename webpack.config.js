@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractSass = new ExtractTextPlugin('css/iframe.css');
+const figConfig = require(process.cwd() + '/fig.config.js');
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -19,7 +20,8 @@ const config = {
          use: [
             {
                loader: 'riot-tag-loader',
-               options: {
+               query  : {
+                  hot: true,
                   template: 'pug',   // テンプレートを指定（任意）
                   debug: true
                }
@@ -64,7 +66,10 @@ const config = {
     ]
   },
   plugins: [
-    extractSass
+    extractSass,
+    new webpack.DefinePlugin({
+      FIG_CONFIG: JSON.stringify(figConfig)
+    })
   ]
 }
 

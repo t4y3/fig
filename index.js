@@ -1,65 +1,24 @@
 #!/usr/bin/env node
 
-var config = require(process.cwd() + '/fig.config.js');
-var fs = require('fs');
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config');
+var path = require('path');
 var express = require('express');
-var app = express();
-var ejs = require('ejs');
-var port = process.env.PORT || 8080;
-var bs = require("browser-sync").create();
 
+new WebpackDevServer(webpack(config), {
+  contentBase: path.join(__dirname, "dist"),
+  watchContentBase: true,
+  hot: true,
+  historyApiFallback: true,
+  stats: {colors: true},
+  setup: function(app) {
+    app.get('/*', express.static(process.cwd()));
+  }
+}).listen(3000, 'localhost', function (err, result) {
+  if (err) {
+    console.log(err);
+  }
 
-/**
- * Setting Express
- */
-app.engine('ejs', ejs.renderFile);
-app.set('views', __dirname + '/dist');
-// staticファイルの設定
-app.use(express.static(process.cwd()));
-app.use(express.static(__dirname + '/dist'));
-
-
-
-var promises = [];
-var codes = [];
-var tagNames = [];
-for (var i = 0, len = config.tags.length; i < len; i++) {
-  promises.push(getCode(i, config.tags[i]));
-  tagNames[i] = config.tags[i].match(/.*\/(.*)\.tag/)[1];
-}
-
-Promise.all(promises).then(function() {
-  app.get('/', function(req, res){
-    res.render('index.ejs', {
-      includes: config.includes,
-      tags: tagNames,
-      codes: codes,
-      colors: config.colors || []
-    });
-  });
-
-  var server = app.listen(port, function(){
-    console.log('[Fig] Access URLs:');
-    console.log('-------------------------------------');
-    console.log(' Local: http://localhost:' + port);
-    console.log('-------------------------------------');
-  });
-
-  // .init starts the server
-  bs.init({ port: '8081', proxy: 'http://localhost:8080' });
-  // Listen to change events on HTML and reload
-  bs.watch(process.cwd() + '/' + config.includes.js).on("change", bs.reload);
+  console.log('Listening at localhost:3000');
 });
-
-
-/**
- * Get code
- */
-function getCode(index, tag) {
-  return new Promise(function(resolve, reject) {
-    fs.readFile(tag, 'utf8', function (err, text) {
-      codes[index] = text;
-      resolve();
-    });
-  });
-}

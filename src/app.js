@@ -11,6 +11,12 @@ import riotx from 'riotx';
 import store from './stores';
 riotx.add(store);
 
+riotx.get().commit('all', {
+  parentIndex: 0,
+  childrenIndex: 0,
+  figures: FIG_CONFIG,
+});
+
 // Components
 import './tags';
 

@@ -1,13 +1,11 @@
 fig-app
-  .app-inner(if="{ loaded }")
+  .app-inner
     .app-left(show="{ isShowTree }")
       fig-tree
     .app-right
       fig-header
       .app-right-top
         fig-view
-      //.app-right-bottom(show="{ isShowCodes }")
-        fig-code
 
   style(type="scss").
     :scope {
@@ -48,31 +46,11 @@ fig-app
     }
 
   script.
-    import { ACTIONS, GETTERS, KEY_EVENTS } from '../../../common/constant';
+    import { KEY_EVENTS } from '../../../common/constant';
     import queryString from 'query-string';
     import Mousetrap from 'mousetrap';
-    let store = this.riotx.get();
 
     this.on('before-mount', () => {
-      this.riotxChange(store, ACTIONS.UPDATED_ALL, (state, store) => {
-        this.loaded = true;
-        this.update();
-      });
-
-      // Update App setting
-      let tags = [];
-      for (let i = 0; i < FIG_CONFIG.tags.length; i++) {
-        tags[i] = FIG_CONFIG.tags[i].match(/.*\/(.*)\.tag/)[1];
-      }
-      let tag = queryString.parse(location.hash).tag || tags[0];
-      store.action(ACTIONS.UPDATE_ALL, {
-        tags: tags,
-        activeTag: tag,
-        includes: FIG_CONFIG.includes,
-        colors: FIG_CONFIG.colors,
-        codes: []
-      });
-
       this.isShowTree = true;
       this.isShowCodes = true;
 
@@ -81,9 +59,4 @@ fig-app
         this.isShowTree = !this.isShowTree;
         this.update();
       });
-      // // toggle codes
-      // Mousetrap.bind(KEY_EVENTS.TOGGLE_CODES, () => {
-      //   this.isShowCodes = !this.isShowCodes;
-      //   this.update();
-      // });
     });

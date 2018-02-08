@@ -1,8 +1,12 @@
+const fs = require('fs');
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractSass = new ExtractTextPlugin('css/iframe.css');
-const figConfig = require(process.cwd() + '/fig.config.js');
+
+const figConfig = require(process.cwd() + '/.fig/config.js');
+const headHtml = fs.readFileSync(process.cwd() + '/.fig/head.html', 'utf8');
+
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -68,7 +72,8 @@ const config = {
   plugins: [
     extractSass,
     new webpack.DefinePlugin({
-      FIG_CONFIG: JSON.stringify(figConfig)
+      FIG_CONFIG: JSON.stringify(figConfig),
+      HEAD_HTML: JSON.stringify({ html: headHtml })
     })
   ]
 }

@@ -1,14 +1,18 @@
 fig-tree
   .title Fig
-  form.search-form
-    i.material-icons.md-18 search
-    input.search-input(type="text" placeholder="my-app.tag" onkeyup="{ changeHandler }")
   ul.list
-    li.list__item(
-      each="{ item, i in displayTags }"
-      onclick="{ clickHander }"
-      class="{ list__item--active: item == activeTag }")
-      p.list__item-text { item }
+    li.list__item(each="{ tag, i in displayTags }")
+      p.tag-title(onclick="{ toggleAccordion }")
+        | { tag.name }
+        i.material-icons(if="{ !openFlags[i] }") keyboard_arrow_right
+        i.material-icons(if="{ openFlags[i] }") keyboard_arrow_down
+      .tag-list(show="{ openFlags[i] }")
+          p.tag-list__item(
+            data-parent="{ i }"
+            each="{ item, j in tag.list }"
+            onclick="{ clickHander }"
+            class="{ tag-list__item--active: (j == childrenIndex && i == parentIndex) }")
+            | { item.name }
 
   style(type="scss").
     :scope {
@@ -16,6 +20,7 @@ fig-tree
       flex-direction: column;
       height: 100%;
       background-color: #fff;
+      user-select: none;
     }
 
     .title {
@@ -24,30 +29,8 @@ fig-tree
       color: rgba(216, 27, 96 ,1);
       font-size: 3rem;
       font-weight: bold;
-      line-height: 5rem;
+      line-height: 4rem;
       border-bottom: 1px solid #c1c1c1;
-    }
-
-    .search-form {
-      display: flex;
-      align-items: center;
-      /*width: 100%;*/
-      padding: 5px;
-      margin: 0 16px 16px;
-      background-color: #fff;
-      box-shadow: 0 0 12px 0 #c1c1c1;
-
-      i {
-        margin-right: 5px;
-        font-size: 1.8rem;
-      }
-
-      .search-input {
-        flex: 1;
-        font-size: 1.6rem;
-        border: none;
-        outline: none;
-      }
     }
 
     .list {
@@ -56,32 +39,47 @@ fig-tree
     }
 
     .list__item {
-      padding-left: 4px;
       font-size: 1.6rem;
       cursor: pointer;
       position: relative;
 
-      &--active:after {
-        content: "";
-        display: block;
-        width: 4px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(216, 27, 96 ,1);
-      }
+      .tag-title {
+        display: flex;
+        align-items: center;
+        padding: 8px 8px;
+        /* margin-left: 10px; */
+        position: relative;
+        font-size: 1.4rem;
 
-      &:hover {
-        .list__item-text {
-           background-color: rgba(216, 27, 96 ,1);
-           color: #fff;
+        i {
+          margin-left: auto;
+          font-size: 18px;
         }
       }
 
-      .list__item-text {
-         padding: 8px 8px;
-         margin-left: 10px;
+      .tag-list {
+        .tag-list__item {
+          padding: 8px 8px;
+          margin-left: 8px;
+          position: relative;
+          font-size: 1.2rem;
+
+          &:hover {
+             background-color: rgba(216, 27, 96 ,1);
+             color: #fff;
+          }
+
+          &--active:after {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: -8px;
+            background-color: rgba(216, 27, 96 ,1);
+          }
+        }
       }
     }
 
@@ -93,14 +91,19 @@ fig-tree
     this.on('before-mount', () => {
       // Update active tag
       this.riotxChange(store, ACTIONS.UPDATED_ACTIVE_TAG, (state, store) => {
-        this.activeTag = store.getter(GETTERS.ACTIVE_TAG);
-        location.hash = `#tag=${ this.activeTag }`;
+        this.parentIndex = store.getter(GETTERS.PARENT_INDEX);
+        this.childrenIndex = store.getter(GETTERS.CHILDREN_INDEX);
         this.update();
       });
 
-      this.allTags = store.getter(GETTERS.TAGS);
+      this.parentIndex = store.getter(GETTERS.PARENT_INDEX);
+      this.childrenIndex = store.getter(GETTERS.CHILDREN_INDEX);
+      this.allTags = store.getter(GETTERS.FIGURES);
       this.displayTags = this.allTags;
-      this.activeTag = store.getter(GETTERS.ACTIVE_TAG);
+      this.openFlags = {};
+      for (let i = 0; i < this.displayTags.length; i++) {
+        this.openFlags[i] = true;
+      }
 
       // move focused tag
       Mousetrap.bind(KEY_EVENTS.MOVE_DOWN, () => {
@@ -117,32 +120,17 @@ fig-tree
      * @return
      */
     this.clickHander = (e) => {
-      store.action(ACTIONS.UPDATE_ACTIVE_TAG, e.item.item);
+      store.action(ACTIONS.UPDATE_ACTIVE_TAG, e.target.dataset.parent, e.item.j);
     };
 
     /**
-     * Update display tag
+     * Toggle Accordion Flags
      * @param  {Object} e Event object
      * @return
      */
-    this.changeHandler = (e) => {
-      // TODO: 最適化
-      let inActiveTag = false;
-      let text = e.target.value;
-      this.displayTags = [];
-      for (let i = 0, len = this.allTags.length; i < len; i++) {
-        if (this.allTags[i].indexOf(text) != -1) {
-          this.displayTags.push(this.allTags[i]);
-          if (this.allTags[i] == this.activeTag) {
-            inActiveTag = true;
-          }
-        }
-      }
-
-      if (!inActiveTag) {
-        this.displayTags.unshift(this.activeTag);
-      }
-    };
+    this.toggleAccordion = (e) => {
+      this.openFlags[e.item.i] = !this.openFlags[e.item.i];
+    }
 
     /**
      * Move the focused tag
@@ -150,10 +138,25 @@ fig-tree
      * @return
      */
     this.moveFocusedTag = (dir) => {
-      let index = this.displayTags.indexOf(this.activeTag);
-      let nextIndex = dir == 'up' ? index - 1 : index + 1;
-      if (nextIndex < 0 || nextIndex >= this.displayTags.length) {
-        return;
+      let nextParentIndex = this.parentIndex;
+      let nextChildrenIndex = dir === 'up' ? this.childrenIndex - 1 : this.childrenIndex + 1;
+
+      if (nextChildrenIndex < 0) {
+        if (this.parentIndex - 1 < 0) {
+          return;
+        }
+
+        nextParentIndex = nextParentIndex - 1;
+        nextChildrenIndex = this.displayTags[this.parentIndex - 1].list.length - 1;
+      } else if (nextChildrenIndex > this.displayTags[this.parentIndex].list.length - 1) {
+        if (this.parentIndex + 1 > this.displayTags.length - 1) {
+          return;
+        }
+
+        nextParentIndex = nextParentIndex + 1;
+        nextChildrenIndex = 0;
       }
-      store.action(ACTIONS.UPDATE_ACTIVE_TAG, this.displayTags[nextIndex]);
+
+      store.action(ACTIONS.UPDATE_ACTIVE_TAG, nextParentIndex, nextChildrenIndex);
+      return;
     };

@@ -8,19 +8,16 @@ export const ACTIONS = {
 
 // Getters
 export const GETTERS = {
-  ALL: 'ALL',
-  TAGS: 'TAGS',
-  ACTIVE_TAG: 'ACTIVE_TAG',
-  INCLUDES: 'INCLUDES',
-  COLORS: 'COLORS',
-  CODES: 'CODES',
+  PARENT_INDEX: 'PARENT_INDEX',
+  CHILDREN_INDEX: 'CHILDREN_INDEX',
+  TAG_TITLE: 'TAG_TITLE',
+  TAG_SUBTITLE: 'TAG_SUBTITLE',
+  FIGURES: 'FIGURES',
 };
 
 // KEY_EVENTS
 export const KEY_EVENTS = {
   TOGGLE_TREE: 'command+shift+left',
-  TOGGLE_CODES: 'command+shift+down',
   MOVE_UP: 'up',
   MOVE_DOWN: 'down',
-  CHANGE_BG_COLOR: 'command+shift+right',
 };

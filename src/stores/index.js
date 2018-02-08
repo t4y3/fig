@@ -2,54 +2,47 @@ import riotx from 'riotx';
 import { ACTIONS, GETTERS } from '../common/constant';
 
 let store = new riotx.Store({
-  // name: 'appleMusic',
   state: {
-    tags: [],
-    activeTag: '',
-    includes: '',
-    colors: [],
-    codes: {},
+    parentIndex: 0,
+    childrenIndex: 0,
+    figures: [],
   },
   actions: {
     [ACTIONS.UPDATE_ALL]: (context, data) => {
       context.commit('all', data);
     },
-    [ACTIONS.UPDATE_ACTIVE_TAG]: (context, tag) => {
-      context.commit('activeTag', tag);
+    [ACTIONS.UPDATE_ACTIVE_TAG]: (context, parent, children) => {
+      context.commit('activeTag', parent, children);
     }
   },
   mutations: {
     all: (context, data) => {
-      context.state.tags = data.tags;
-      context.state.activeTag = data.activeTag;
-      context.state.includes = data.includes;
-      context.state.colors = data.colors;
-      context.state.codes = data.codes;
+      context.state.parentIndex = data.parentIndex;
+      context.state.childrenIndex = data.childrenIndex;
+      context.state.figures = data.figures;
       return [ACTIONS.UPDATED_ALL];
     },
-    activeTag: (context, tag) => {
-      context.state.activeTag = tag;
+    activeTag: (context, parent, children) => {
+      context.state.parentIndex = parent;
+      context.state.childrenIndex = children;
       return [ACTIONS.UPDATED_ACTIVE_TAG];
     },
   },
   getters: {
-    [GETTERS.ALL]: context => {
-      return context.state;
+    [GETTERS.PARENT_INDEX]: context => {
+      return context.state.parentIndex;
     },
-    [GETTERS.TAGS]: context => {
-      return context.state.tags;
+    [GETTERS.CHILDREN_INDEX]: context => {
+      return context.state.childrenIndex;
     },
-    [GETTERS.ACTIVE_TAG]: context => {
-      return context.state.activeTag;
+    [GETTERS.TAG_TITLE]: context => {
+      return context.state.figures[context.state.parentIndex].name;
     },
-    [GETTERS.INCLUDES]: context => {
-      return context.state.includes;
+    [GETTERS.TAG_SUBTITLE]: context => {
+      return context.state.figures[context.state.parentIndex].list[context.state.childrenIndex].name;
     },
-    [GETTERS.COLORS]: context => {
-      return context.state.colors;
-    },
-    [GETTERS.CODES]: context => {
-      return context.state.codes;
+    [GETTERS.FIGURES]: context => {
+      return context.state.figures;
     }
   }
 });

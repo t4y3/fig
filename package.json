@@ -3,8 +3,9 @@
   "version": "0.0.7",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
-    "fig": "index.js"
+    "fig-start": "index.js"
   },
+  "main": "main.js",
   "scripts": {
     "build": "webpack --optimize-minimize",
     "watch": "webpack -w",

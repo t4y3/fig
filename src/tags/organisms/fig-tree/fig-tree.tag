@@ -26,7 +26,7 @@ fig-tree
     .title {
       padding: 0 16px;
       margin-bottom: 16px;
-      color: rgba(216, 27, 96 ,1);
+      color: #10263d;
       font-size: 3rem;
       font-weight: bold;
       line-height: 4rem;
@@ -39,9 +39,9 @@ fig-tree
     }
 
     .list__item {
-      font-size: 1.6rem;
       cursor: pointer;
       position: relative;
+      color: #10263d;
 
       .tag-title {
         display: flex;
@@ -49,7 +49,7 @@ fig-tree
         padding: 8px 8px;
         /* margin-left: 10px; */
         position: relative;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
 
         i {
           margin-left: auto;
@@ -62,10 +62,10 @@ fig-tree
           padding: 8px 8px;
           margin-left: 8px;
           position: relative;
-          font-size: 1.2rem;
+          font-size: 1.4rem;
 
           &:hover {
-             background-color: rgba(216, 27, 96 ,1);
+             background-color: #10263d;
              color: #fff;
           }
 
@@ -77,7 +77,7 @@ fig-tree
             position: absolute;
             top: 0;
             left: -8px;
-            background-color: rgba(216, 27, 96 ,1);
+            background-color: #10263d;
           }
         }
       }

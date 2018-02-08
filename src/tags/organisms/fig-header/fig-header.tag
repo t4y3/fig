@@ -8,9 +8,9 @@ fig-header
       align-items: center;
       padding: 0 16px;
       border-bottom: 1px solid #c1c1c1;
-      background-color: rgba(216, 27, 96 ,1);
+      background-color: #fff;
       box-shadow: 0 0 16px 0 #c1c1c1;
-      color: #fff;
+      color: #10263d;
     }
 
     i {

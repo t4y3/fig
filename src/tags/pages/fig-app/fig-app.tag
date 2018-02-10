@@ -5,7 +5,8 @@ fig-app
     .app-right
       fig-header
       .app-right-top
-        fig-view
+        fig-view(show="{ !isShowInfo }")
+        fig-info(show="{ isShowInfo }")
 
   style(type="scss").
     :scope {
@@ -52,11 +53,18 @@ fig-app
 
     this.on('before-mount', () => {
       this.isShowTree = true;
-      this.isShowCodes = true;
+      this.isShowInfo = false;
 
       // toggle tree
       Mousetrap.bind(KEY_EVENTS.TOGGLE_TREE, () => {
         this.isShowTree = !this.isShowTree;
         this.update();
+      });
+
+      Mousetrap.bind(KEY_EVENTS.TOGGLE_INFO, () => {
+        this.isShowInfo = !this.isShowInfo;
+        this.update();
+        // this.bgIndex = (this.bgIndex + 1) % this.bgColors.length;
+        // this.refs['view-inner'].style.backgroundColor = this.bgColors[this.bgIndex];
       });
     });

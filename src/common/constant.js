@@ -13,11 +13,13 @@ export const GETTERS = {
   TAG_TITLE: 'TAG_TITLE',
   TAG_SUBTITLE: 'TAG_SUBTITLE',
   FIGURES: 'FIGURES',
+  FIGURE: 'FIGURE',
 };
 
 // KEY_EVENTS
 export const KEY_EVENTS = {
   TOGGLE_TREE: 'command+shift+left',
+  TOGGLE_INFO: 'command+shift+right',
   MOVE_UP: 'up',
   MOVE_DOWN: 'down',
 };

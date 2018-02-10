@@ -43,6 +43,9 @@ let store = new riotx.Store({
     },
     [GETTERS.FIGURES]: context => {
       return context.state.figures;
+    },
+    [GETTERS.FIGURE]: context => {
+      return context.state.figures[context.state.parentIndex].list[context.state.childrenIndex];
     }
   }
 });

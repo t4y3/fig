@@ -66,6 +66,7 @@ fig-view
      */
     const getSrcTemplate = (i, j) => {
       let tag = this.allTags[i].list[j].template.replace(/_opts\./g, `window.parent._opts['${ i }_${ j }'].`);
+      let js = `<scr${'i'}pt type="text/javascript" src="_bundle.js"></scr${'i'}pt>`;
 
       return `
         <!DOCTYPE html>
@@ -73,6 +74,7 @@ fig-view
           <head>
             <meta charset="utf-8">
             ${ HEAD_HTML.html }
+            ${ js }
           </head>
           <body>
             <div class="fig-inner fig-inner--center">

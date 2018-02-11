@@ -1,6 +1,6 @@
 fig-view
   .view-inner(ref="view-inner")
-    virtual(each="{ tag, i in allTags }")
+    virtual(each="{ tag, i in figures }")
       virtual(each="{ item, j in tag.list }")
         iframe.view-frame(
           data-parent="{ i }"
@@ -42,17 +42,17 @@ fig-view
         this.update();
       });
 
-      this.allTags = store.getter(GETTERS.FIGURES);
+      this.figures = store.getter(GETTERS.FIGURES);
       this.parentIndex = store.getter(GETTERS.PARENT_INDEX);
       this.childrenIndex = store.getter(GETTERS.CHILDREN_INDEX);
       this.bgIndex = 0;
       this.srcTemplates = [];
 
       window._opts = {};
-      for (let i = 0; i < this.allTags.length; i++) {
+      for (let i = 0; i < this.figures.length; i++) {
         this.srcTemplates[i] =[];
-        for (let j = 0; j < this.allTags[i].list.length; j++) {
-          window._opts[`${ i }_${ j }`] = this.allTags[i].list[j]._opts;
+        for (let j = 0; j < this.figures[i].list.length; j++) {
+          window._opts[`${ i }_${ j }`] = this.figures[i].list[j]._opts;
           this.srcTemplates[i][j] = getSrcTemplate(i, j);
         }
       }
@@ -65,7 +65,7 @@ fig-view
      *
      */
     const getSrcTemplate = (i, j) => {
-      let tag = this.allTags[i].list[j].template.replace(/_opts\./g, `window.parent._opts['${ i }_${ j }'].`);
+      let tag = this.figures[i].list[j].template.replace(/_opts\./g, `window.parent._opts['${ i }_${ j }'].`);
       let js = `<scr${'i'}pt type="text/javascript" src="_bundle.js"></scr${'i'}pt>`;
 
       return `

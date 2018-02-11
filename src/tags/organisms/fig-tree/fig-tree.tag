@@ -98,8 +98,8 @@ fig-tree
 
       this.parentIndex = store.getter(GETTERS.PARENT_INDEX);
       this.childrenIndex = store.getter(GETTERS.CHILDREN_INDEX);
-      this.allTags = store.getter(GETTERS.FIGURES);
-      this.displayTags = this.allTags;
+      this.figures = store.getter(GETTERS.FIGURES);
+      this.displayTags = this.figures;
       this.openFlags = {};
       for (let i = 0; i < this.displayTags.length; i++) {
         this.openFlags[i] = true;

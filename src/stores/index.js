@@ -18,7 +18,7 @@ let appStore = new riotx.Store({
       context.commit('all', data);
     },
     [ACTIONS.UPDATE_ACTIVE_TAG]: (context, parent, children) => {
-      context.commit('activeTag', parent, children);
+      context.commit('activeTag', parseInt(parent, 10), parseInt(children, 10));
     }
   },
   mutations: {
@@ -26,8 +26,8 @@ let appStore = new riotx.Store({
       let data = store.get(STORAGE_KEY);
       if (data) {
         context.state.ui = data.ui;
-        context.state.parentIndex = data.parentIndex;
-        context.state.childrenIndex = data.childrenIndex;
+        context.state.parentIndex = parseInt(data.parentIndex, 10);
+        context.state.childrenIndex = parseInt(data.childrenIndex, 10);
         context.state.figures = data.figures;
       } else {
         context.state.ui = { isTree: true, isInfo: false };
@@ -39,8 +39,8 @@ let appStore = new riotx.Store({
       return [ACTIONS.INITIALIZED_STATE];
     },
     all: (context, data) => {
-      context.state.parentIndex = data.parentIndex;
-      context.state.childrenIndex = data.childrenIndex;
+      context.state.parentIndex = parseInt(data.parentIndex, 10);
+      context.state.childrenIndex = parseInt(data.childrenIndex, 10);
       context.state.figures = data.figures;
       store.set(STORAGE_KEY, context.state);
       return [ACTIONS.UPDATED_ALL];

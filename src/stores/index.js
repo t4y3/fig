@@ -1,8 +1,14 @@
 import riotx from 'riotx';
+import store from 'store';
 import { ACTIONS, GETTERS } from '../common/constant';
+const STORAGE_KEY = 'fig-state';
 
-let store = new riotx.Store({
+let appStore = new riotx.Store({
   state: {
+    ui: {
+      isTree: true,
+      isInfo: false
+    },
     parentIndex: 0,
     childrenIndex: 0,
     figures: [],
@@ -16,15 +22,38 @@ let store = new riotx.Store({
     }
   },
   mutations: {
+    initState: (context, figures) => {
+      let data = store.get(STORAGE_KEY);
+      if (data) {
+        context.state.ui = data.ui;
+        context.state.parentIndex = data.parentIndex;
+        context.state.childrenIndex = data.childrenIndex;
+        context.state.figures = data.figures;
+      } else {
+        context.state.ui = { isTree: true, isInfo: false };
+        context.state.parentIndex = 0;
+        context.state.childrenIndex = 0;
+        context.state.figures = figures;
+      }
+      store.set(STORAGE_KEY, context.state);
+      return [ACTIONS.INITIALIZED_STATE];
+    },
     all: (context, data) => {
       context.state.parentIndex = data.parentIndex;
       context.state.childrenIndex = data.childrenIndex;
       context.state.figures = data.figures;
+      store.set(STORAGE_KEY, context.state);
       return [ACTIONS.UPDATED_ALL];
+    },
+    updateUi: (context, data) => {
+      context.state.ui = data;
+      store.set(STORAGE_KEY, context.state);
+      return [ACTIONS.UPDATED_ACTIVE_TAG];
     },
     activeTag: (context, parent, children) => {
       context.state.parentIndex = parent;
       context.state.childrenIndex = children;
+      store.set(STORAGE_KEY, context.state);
       return [ACTIONS.UPDATED_ACTIVE_TAG];
     },
   },
@@ -46,8 +75,11 @@ let store = new riotx.Store({
     },
     [GETTERS.FIGURE]: context => {
       return context.state.figures[context.state.parentIndex].list[context.state.childrenIndex];
+    },
+    [GETTERS.UI_STATE]: context => {
+      return context.state.ui;
     }
   }
 });
 
-export default store;
+export default appStore;

@@ -1,12 +1,12 @@
 fig-app
   .app-inner
-    .app-left(show="{ isShowTree }")
+    .app-left(show="{ uiState.isTree }")
       fig-tree
     .app-right
       fig-header
       .app-right-top
-        fig-view(show="{ !isShowInfo }")
-        fig-info(show="{ isShowInfo }")
+        fig-view(show="{ !uiState.isInfo }")
+        fig-info(show="{ uiState.isInfo }")
 
   style(type="scss").
     :scope {
@@ -47,24 +47,24 @@ fig-app
     }
 
   script.
-    import { KEY_EVENTS } from '../../../common/constant';
+    import { GETTERS, KEY_EVENTS } from '../../../common/constant';
     import queryString from 'query-string';
     import Mousetrap from 'mousetrap';
+    let store = this.riotx.get();
 
     this.on('before-mount', () => {
-      this.isShowTree = true;
-      this.isShowInfo = false;
+      this.uiState = store.getter(GETTERS.UI_STATE);
 
       // toggle tree
       Mousetrap.bind(KEY_EVENTS.TOGGLE_TREE, () => {
-        this.isShowTree = !this.isShowTree;
+        this.uiState.isTree = !this.uiState.isTree;
+        this.riotx.get().commit('updateUi', this.uiState);
         this.update();
       });
 
       Mousetrap.bind(KEY_EVENTS.TOGGLE_INFO, () => {
-        this.isShowInfo = !this.isShowInfo;
+        this.uiState.isInfo = !this.uiState.isInfo;
+        this.riotx.get().commit('updateUi', this.uiState);
         this.update();
-        // this.bgIndex = (this.bgIndex + 1) % this.bgColors.length;
-        // this.refs['view-inner'].style.backgroundColor = this.bgColors[this.bgIndex];
       });
     });

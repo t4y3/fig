@@ -8,12 +8,7 @@ import riotx from 'riotx';
 // store
 import store from './stores';
 riotx.add(store);
-
-riotx.get().commit('all', {
-  parentIndex: 0,
-  childrenIndex: 0,
-  figures: FIG_CONFIG.figures,
-});
+riotx.get().commit('initState', FIG_CONFIG.figures);
 
 // Components
 import './tags';

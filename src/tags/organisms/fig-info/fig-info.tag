@@ -58,6 +58,7 @@ fig-info
       width: 100%;
       margin: 20px auto;
       font-size: 1.4rem;
+      overflow: scroll;
 
       p {
         padding: 8px 0;

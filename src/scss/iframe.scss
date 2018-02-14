@@ -10,3 +10,12 @@ body {
   // justify-content: center;
   // align-items: center;
 }
+
+.fig-inner {
+  &--center {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

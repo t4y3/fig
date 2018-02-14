@@ -1,4 +1,3 @@
-import './index.ejs';
 import './scss/style.scss';
 import './scss/iframe.scss';
 
@@ -9,6 +8,7 @@ import riotx from 'riotx';
 // store
 import store from './stores';
 riotx.add(store);
+riotx.get().commit('initState', FIG_CONFIG.figures);
 
 // Components
 import './tags';

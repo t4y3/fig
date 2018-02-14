@@ -1,10 +1,11 @@
 {
   "name": "@t4y3/fig",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
-    "fig": "index.js"
+    "fig-start": "index.js"
   },
+  "main": "infig/main.js",
   "scripts": {
     "build": "webpack --optimize-minimize",
     "watch": "webpack -w",
@@ -25,18 +26,14 @@
   },
   "homepage": "https://github.com/t4y3/fig#readme",
   "dependencies": {
-    "browser-sync": "^2.23.6",
-    "ejs": "^2.5.7",
-    "express": "^4.16.2"
-  },
-  "devDependencies": {
     "buble": "^0.18.0",
     "buble-loader": "^0.4.1",
+    "copy-webpack-plugin": "^4.4.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.12.0",
     "eslint-plugin-script-tags": "^0.4.0",
+    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
     "highlight.js": "^9.12.0",
     "mousetrap": "^1.6.1",
     "node-sass": "^4.7.2",
@@ -45,10 +42,13 @@
     "query-string": "^5.0.1",
     "reset-css": "^2.2.1",
     "riot": "^3.7.4",
-    "riot-tag-loader": "^1.0.0",
+    "riot-hot-reload": "^1.0.0",
+    "riot-tag-loader": "^2.0.2",
     "riotx": "^0.9.4",
     "sass-loader": "^6.0.6",
+    "store": "^2.0.12",
     "style-loader": "^0.19.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }

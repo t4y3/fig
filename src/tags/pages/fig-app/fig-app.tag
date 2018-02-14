@@ -1,13 +1,12 @@
 fig-app
-  .app-inner(if="{ loaded }")
-    .app-left(show="{ isShowTree }")
+  .app-inner
+    .app-left(show="{ uiState.isTree }")
       fig-tree
     .app-right
       fig-header
       .app-right-top
-        fig-view
-      .app-right-bottom(show="{ isShowCodes }")
-        fig-code
+        fig-view(show="{ !uiState.isInfo }")
+        fig-info(show="{ uiState.isInfo }")
 
   style(type="scss").
     :scope {
@@ -48,38 +47,24 @@ fig-app
     }
 
   script.
-    import { ACTIONS, GETTERS, KEY_EVENTS } from '../../../common/constant';
+    import { GETTERS, KEY_EVENTS } from '../../../common/constant';
     import queryString from 'query-string';
     import Mousetrap from 'mousetrap';
     let store = this.riotx.get();
 
     this.on('before-mount', () => {
-      this.riotxChange(store, ACTIONS.UPDATED_ALL, (state, store) => {
-        this.loaded = true;
-        this.update();
-      });
-
-      // Update App setting
-      let tag = queryString.parse(location.hash).tag || opts.tags[0];
-      store.action(ACTIONS.UPDATE_ALL, {
-        tags: opts.tags,
-        activeTag: tag,
-        includes: opts.includes,
-        colors: opts.colors,
-        codes: opts.codes
-      });
-
-      this.isShowTree = true;
-      this.isShowCodes = true;
+      this.uiState = store.getter(GETTERS.UI_STATE);
 
       // toggle tree
       Mousetrap.bind(KEY_EVENTS.TOGGLE_TREE, () => {
-        this.isShowTree = !this.isShowTree;
+        this.uiState.isTree = !this.uiState.isTree;
+        this.riotx.get().commit('updateUi', this.uiState);
         this.update();
       });
-      // toggle codes
-      Mousetrap.bind(KEY_EVENTS.TOGGLE_CODES, () => {
-        this.isShowCodes = !this.isShowCodes;
+
+      Mousetrap.bind(KEY_EVENTS.TOGGLE_INFO, () => {
+        this.uiState.isInfo = !this.uiState.isInfo;
+        this.riotx.get().commit('updateUi', this.uiState);
         this.update();
       });
     });

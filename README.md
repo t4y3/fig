@@ -2,15 +2,14 @@
 Fig - library for gallery of Riot tag  
 https://www.npmjs.com/package/@t4y3/fig
 
-## Demo
-- https://fig-sample.appspot.com/
-
 ## Capture
-![fig-sample appspot com_](https://user-images.githubusercontent.com/9010553/33953624-edb31020-e078-11e7-95fe-a34d8edb93b6.png)
+![fig-sample](https://user-images.githubusercontent.com/9010553/36212907-89d063ae-11e8-11e8-8076-56582beae906.png)
+
+![fig-sample](https://user-images.githubusercontent.com/9010553/36212906-89978034-11e8-11e8-8774-0c25e2f74ac3.png)
+
 
 ## Description
 Mount the custom tag specified in tags in the iframe.  
-It is not for preview and development.  
 It is for displaying and confirming the custom tag created.  
 Use it like a style guide.
 
@@ -22,49 +21,64 @@ npm i @t4y3/fig
 ## Usage
 ```bash
 # Server start
-fig
+fig-start
 ```
 
 Access `localhost: 8080`
 
 ## Configuration
-Set the following rule in `fig.config.js`.
+```sh
+.fig/config.js
+.fig/head.html
+path/to/fig.js
+```
+
+### .fig/config.js
+Set the following rule in `.fig/config.js`.
 
 ```js
+const inFig = require('@t4y3/fig');
+
+require('./path/to/components1/fig.js');
+require('./path/to/components2/fig.js');
+require('./path/to/components3/fig.js');
+
 module.exports = {
-  includes: {
-    css: [
-      'http://cdn.jsdelivr.net/blazecss/1.1.3/blaze.min.css'
-    ],
-    js: [
-      'dist/bundle.js'
-    ],
-  },
-  colors: [
-    '#fff',
-    '#f00',
-  ],
-  tags: [
-    'src/my-app.tag',
-    'src/my-header.tag',
-  ]
+  'bundle': 'dist/bundle.js',
+  'figures': inFig.getFigures()
 };
+
 ```
-- `includes` - files required to display custom tags
-  - A bundled js file containing custom tags is required
-  - `css` is not mandatory
-- `colors` - Background color
-  - Specified in Hex or rgb format
-- `tags` - Path of tag file
-  - Specify the path of the custom tag you want to display
+- `bundle` - files required to display custom tags
+
+### .fig/head.html
+```html
+<link rel="stylesheet" href="path/to/style.css">
+<script type="text/javascript" src="path/to/script.js"></script>
+```
+- Add resources other than bundle files.
+- It will be added in the head tag.
+
+### `fig.js`.
+
+```js
+const inFig = require('@t4y3/fig');
+
+inFig.set('Button')
+  .add('red', () => {
+      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+    }, {
+      type: 'red'
+    })
+  .add('blue', () => {
+      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+    }, {
+      type: 'blue'
+    });
+
+```
 
 ## Shortcut
 - `command + shift + ←` - Toggle Tree View
-- `commnad + shift + ↓` - Toggle Code View
-- `commnad + shift + →` - Change BgColor
+- `commnad + shift + →` - Toggle Info View
 - `↑ or ↓` - Change View Custom Tag
-
-
-## Licence
-
-[MIT](https://github.com/t4y3/fig/blob/develop/LICENSE)

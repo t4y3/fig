@@ -26,8 +26,14 @@ let appStore = new riotx.Store({
       let data = store.get(STORAGE_KEY);
       if (data) {
         context.state.ui = data.ui;
-        context.state.parentIndex = parseInt(data.parentIndex, 10);
-        context.state.childrenIndex = parseInt(data.childrenIndex, 10);
+        if (figures[parseInt(data.parentIndex, 10)] && figures[parseInt(data.parentIndex, 10)].list[parseInt(data.childrenIndex, 10)]) {
+          context.state.parentIndex = parseInt(data.parentIndex, 10);
+          context.state.childrenIndex = parseInt(data.childrenIndex, 10);
+        } else {
+          context.state.parentIndex = 0;
+          context.state.childrenIndex = 0;
+        }
+
         context.state.figures = figures;
       } else {
         context.state.ui = { isTree: true, isInfo: false };

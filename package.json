@@ -42,6 +42,7 @@
     "query-string": "^5.0.1",
     "reset-css": "^2.2.1",
     "riot": "^3.7.4",
+    "riot-compiler": "^3.4.0",
     "riot-hot-reload": "^1.0.0",
     "riot-tag-loader": "^2.0.2",
     "riotx": "^0.9.4",

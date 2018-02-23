@@ -1,21 +1,18 @@
 import './scss/style.scss';
 import './scss/iframe.scss';
 
-// ライブラリ
-import riot from 'riot';
-import riotx from 'riotx';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import App from './tags2/reducers'
+let store = createStore(App);
 
-// store
-import store from './stores';
-riotx.add(store);
-riotx.get().commit('initState', FIG_CONFIG.figures);
+import FigApp from './tags2/FigApp';
 
-// Components
-import './tags';
-
-let observer = riot.observable();
-riot.mixin({ observer })
-
-window.addEventListener('DOMContentLoaded', () => {
-  riot.mount('*');
-});
+ReactDOM.render(
+  <Provider store={store}>
+    <FigApp />
+  </Provider>,
+  document.getElementById('root')
+);

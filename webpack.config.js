@@ -2,12 +2,10 @@ const fs = require('fs');
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractSass = new ExtractTextPlugin('css/iframe.css');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const figConfig = require(process.cwd() + '/.fig/config.js');
 const headHtml = fs.readFileSync(process.cwd() + '/.fig/head.html', 'utf8');
-
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -21,24 +19,10 @@ const config = {
   module: {
     rules: [
       {
-         test: /\.tag$/,
-         enforce: 'pre',
-         exclude: /node_modules/,
-         use: [
-            {
-               loader: 'riot-tag-loader',
-               query  : {
-                  template: 'pug',
-                  debug: true
-               }
-            }
-         ]
-      },
-      {
-        test: /\.js|\.tag$/,
+        test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         use: [
-          'buble-loader'
+          'babel-loader'
         ]
       },
       {
@@ -51,7 +35,7 @@ const config = {
       },
       {
         test: /iframe\.scss$/,
-        use: extractSass.extract({
+        use: ExtractTextPlugin.extract({
           use: [{
             loader: "css-loader"
           }, {
@@ -62,7 +46,9 @@ const config = {
     ]
   },
   plugins: [
-    extractSass,
+    new ExtractTextPlugin({
+      filename: 'css/iframe.css'
+    }),
     new webpack.DefinePlugin({
       FIG_CONFIG: JSON.stringify(figConfig),
       HEAD_HTML: JSON.stringify({ html: headHtml })

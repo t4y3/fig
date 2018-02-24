@@ -1,0 +1,56 @@
+.fig-info {
+  display: block;
+  height: 100%;
+  background: #fff;
+  border: 1px solid #c1c1c1;
+
+  .info-title {
+    padding: 8px 0;
+    font-size: 2.4rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .info-inner {
+    width: 80%;
+    margin: 10% auto;
+    background: #fff;
+  }
+
+  .code-inner {
+    width: 100%;
+    margin: 20px auto;
+    font-size: 1.4rem;
+
+    p {
+      padding: 8px 0;
+      margin-bottom: 16px;
+      font-size: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  .opts-inner {
+    width: 100%;
+    margin: 20px auto;
+    font-size: 1.4rem;
+    overflow: scroll;
+
+    p {
+      padding: 8px 0;
+      margin-bottom: 16px;
+      font-size: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    table {
+      width: 100%;
+      font-size: 18px;
+
+      th, td {
+        padding: 8px;
+        border: 1px solid #c1c1c1;
+      }
+    }
+  }
+
+}

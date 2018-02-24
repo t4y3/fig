@@ -1,0 +1,17 @@
+.fig-view {
+  display: block;
+  height: 100%;
+
+  .view-inner {
+    height: 100%;
+    background: #fff;
+    position: relative;
+    border: 1px solid #c1c1c1;
+  }
+
+  .view-frame {
+    display: block;
+    height: 100%;
+  }
+
+}

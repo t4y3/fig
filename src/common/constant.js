@@ -1,24 +1,3 @@
-// Actions
-export const ACTIONS = {
-  INITIALIZE_STATE: 'INITIALIZE_STATE',
-  INITIALIZED_STATE: 'INITIALIZED_STATE',
-  UPDATE_ALL: 'UPDATE_ALL',
-  UPDATED_ALL: 'UPDATED_ALL',
-  UPDATE_ACTIVE_TAG: 'UPDATE_ACTIVE_TAG',
-  UPDATED_ACTIVE_TAG: 'UPDATED_ACTIVE_TAG',
-};
-
-// Getters
-export const GETTERS = {
-  PARENT_INDEX: 'PARENT_INDEX',
-  CHILDREN_INDEX: 'CHILDREN_INDEX',
-  TAG_TITLE: 'TAG_TITLE',
-  TAG_SUBTITLE: 'TAG_SUBTITLE',
-  FIGURES: 'FIGURES',
-  FIGURE: 'FIGURE',
-  UI_STATE: 'UI_STATE',
-};
-
 // KEY_EVENTS
 export const KEY_EVENTS = {
   TOGGLE_TREE: 'command+shift+left',
@@ -26,3 +5,6 @@ export const KEY_EVENTS = {
   MOVE_UP: 'up',
   MOVE_DOWN: 'down',
 };
+
+// Storage Key
+export const STORAGE_KEY = 'fig-state';

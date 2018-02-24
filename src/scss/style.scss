@@ -4,11 +4,21 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+@import "app";
+@import "header";
+@import "info";
+@import "tree";
+@import "view";
+
 * { box-sizing: border-box; }
 
 html, body {
-    height: 100%;
-    margin: 0;
-    font-size: 62.5%;
-    font-family: 'Inconsolata', monospace;
+  height: 100%;
+  margin: 0;
+  font-size: 62.5%;
+  font-family: 'Inconsolata', monospace;
+}
+
+.hide {
+  display: none !important;
 }

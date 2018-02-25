@@ -1,17 +1,27 @@
 #!/usr/bin/env node
 
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
-config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
-var path = require('path');
-var express = require('express');
+// require the module as normal
+let browserSync = require("browser-sync");
 
-var compiler = webpack(config);
+// Start the server
+browserSync({
+  port: 8080,
+  server: [
+    __dirname + "/dist",
+    process.cwd()
+  ]
+});
 
-new WebpackDevServer(compiler, {
-  contentBase: path.join(__dirname, "dist"),
-  inline: true,
-  stats: { colors: true },
-  watchContentBase: true
-}).listen(8080);
+
+const config = require(process.cwd() + '/.fig/config.js');
+let http = require('http');
+
+let listener = function (req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  });
+
+  res.end(JSON.stringify(config));
+};
+http.createServer(listener).listen(8081);

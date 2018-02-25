@@ -1,5 +1,4 @@
 import { h, app } from "hyperapp"
-import hljs from 'highlight.js';
 
 const FigInfo = ({ show, figures, pindex, cindex }) => (
   <div className={`fig-info ${ show ? '': 'hide' }`}>

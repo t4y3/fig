@@ -2,6 +2,45 @@ import store from 'store';
 import { STORAGE_KEY } from './common/constant';
 
 const actions = {
+  initState: (data) => (state) => {
+    let storage = store.get(STORAGE_KEY);
+    let bundle = data.bundle;
+    let isTree = state.isTree;
+    let isInfo = state.isInfo;
+    let parentIndex = state.parentIndex;
+    let childrenIndex = state.childrenIndex;
+
+    if (storage) {
+      isTree = storage.isTree;
+      isInfo = storage.isInfo;
+      if (data.figures[storage.parentIndex] && data.figures[storage.parentIndex].list[storage.childrenIndex]) {
+        parentIndex = storage.parentIndex;
+        childrenIndex = storage.childrenIndex;
+      } else {
+        parentIndex = 0;
+        childrenIndex = 0;
+      }
+    }
+
+    // Set Storage
+    let s = Object.assign({}, state);
+    store.set(STORAGE_KEY, Object.assign(s, {
+      bundle,
+      isTree,
+      isInfo,
+      parentIndex,
+      childrenIndex,
+      figures: data.figures
+    }));
+    return {
+      bundle,
+      isTree,
+      isInfo,
+      parentIndex,
+      childrenIndex,
+      figures: data.figures
+    }
+  },
   changeTree: (index) => (state) => {
     // Set Storage
     let s = Object.assign({}, state);

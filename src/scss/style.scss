@@ -1,6 +1,5 @@
 // @see https://github.com/webpack-contrib/sass-loader#imports
-@import "~reset-css/reset.css";
-@import '~highlight.js/styles/github.css';
+@import "node_modules/reset-css/_reset";
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 

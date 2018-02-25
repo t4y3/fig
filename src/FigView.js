@@ -12,7 +12,7 @@ const loadedCallback = (e) => {
   });
 }
 
-const getSrcTemplate = (figures, pi, ci) => {
+const getSrcTemplate = (figures, pi, ci, bundle) => {
   let item = figures[pi].list[ci];
   let tag = item.template;
 
@@ -32,14 +32,15 @@ const getSrcTemplate = (figures, pi, ci) => {
 
     }
   }
-  let js = `<scr${'i'}pt type="text/javascript" src="_bundle.js"></scr${'i'}pt>`;
 
+  let js = `<scr${'i'}pt type="text/javascript" src="${ bundle }"></scr${'i'}pt>`;
+
+  // TODO: head.html
   return `
     <!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
-        ${ HEAD_HTML.html }
         ${ js }
       </head>
       <body>
@@ -50,7 +51,7 @@ const getSrcTemplate = (figures, pi, ci) => {
     </html>`;
 };
 
-const FigView = ({ show, figures, pindex, cindex }) => (
+const FigView = ({ show, figures, pindex, cindex, bundle }) => (
   <div className={`fig-view ${ show ? '': 'hide' }`}>
     <div className="view-inner">
     {figures.map((figure, pi) => {
@@ -60,7 +61,7 @@ const FigView = ({ show, figures, pindex, cindex }) => (
             width="100%"
             sandbox="allow-scripts allow-same-origin"
             className={`view-frame ${ pindex == pi && cindex == ci ? '': 'hide'}`}
-            srcdoc={ getSrcTemplate(figures, pi, ci) }
+            srcdoc={ getSrcTemplate(figures, pi, ci, bundle) }
             onload={ (e) => { loadedCallback(e) } }>
           </iframe>
         )

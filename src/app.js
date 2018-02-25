@@ -7,10 +7,6 @@ import FigView from './FigView'
 import { KEY_EVENTS } from './common/constant';
 import Mousetrap from 'mousetrap';
 
-// load Style
-import './scss/style.scss';
-import './scss/iframe.scss';
-
 // Init Store
 import state from './state';
 
@@ -57,6 +53,7 @@ const view = (state, actions) => (
             figures={ state.figures }
             pindex={ state.parentIndex }
             cindex={ state.childrenIndex }
+            bundle={ state.bundle }
           />
           <FigInfo
             show={ state.isInfo }
@@ -74,4 +71,11 @@ const view = (state, actions) => (
 let main;
 window.addEventListener('DOMContentLoaded', () => {
   main = app(state, actions, view, document.body);
+  fetch('http://localhost:8081', {
+    mode: 'cros'
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    main.initState(data);
+  });
 });

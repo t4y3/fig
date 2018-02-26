@@ -1,8 +1,5 @@
 import { h, app } from "hyperapp"
-import FigTree from './FigTree'
-import FigHeader from './FigHeader'
-import FigInfo from './FigInfo'
-import FigView from './FigView'
+import FigApp from './FigApp'
 
 import { KEY_EVENTS } from './common/constant';
 import Mousetrap from 'mousetrap';
@@ -31,40 +28,7 @@ Mousetrap.bind(KEY_EVENTS.MOVE_UP, () => {
 
 // Root view
 const view = (state, actions) => (
-  <div className="fig-app">
-    <div className="app-inner">
-      <div className={`app-left ${ state.isTree ? '': 'hide' }`}>
-        <FigTree
-          figures={ state.figures }
-          pindex={ state.parentIndex }
-          cindex={ state.childrenIndex }
-          action={ actions }
-        />
-      </div>
-      <div className="app-right">
-        <FigHeader
-          figures={ state.figures }
-          pindex={ state.parentIndex }
-          cindex={ state.childrenIndex }
-        />
-        <div className="app-right-top">
-          <FigView
-            show={ !state.isInfo }
-            figures={ state.figures }
-            pindex={ state.parentIndex }
-            cindex={ state.childrenIndex }
-            bundle={ state.bundle }
-          />
-          <FigInfo
-            show={ state.isInfo }
-            figures={ state.figures }
-            pindex={ state.parentIndex }
-            cindex={ state.childrenIndex }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+  <FigApp state={ state } actions={ actions } />
 )
 
 // Entry(browser)

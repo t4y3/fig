@@ -4,11 +4,13 @@ import { STORAGE_KEY } from './common/constant';
 // Init Store
 let state = {
   bundle: '',
+  headHtml: '',
   isTree: true,
   isInfo: false,
-  parentIndex: 0,
-  childrenIndex: 0,
+  pi: 0,  // parentIndex
+  ci: 0,  // childrenIndex
   figures: [],
+  figuresOpen: [],
 };
 
 export default state;

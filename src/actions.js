@@ -7,110 +7,106 @@ const actions = {
     let bundle = data.bundle;
     let isTree = state.isTree;
     let isInfo = state.isInfo;
-    let parentIndex = state.parentIndex;
-    let childrenIndex = state.childrenIndex;
+    let pi = state.pi;
+    let ci = state.ci;
+    let figuresOpen = [];
+    for (let i = 0; i < data.figures.length; i++) {
+      figuresOpen[i] = true;
+    }
 
     if (storage) {
       isTree = storage.isTree;
       isInfo = storage.isInfo;
-      if (data.figures[storage.parentIndex] && data.figures[storage.parentIndex].list[storage.childrenIndex]) {
-        parentIndex = storage.parentIndex;
-        childrenIndex = storage.childrenIndex;
-      } else {
-        parentIndex = 0;
-        childrenIndex = 0;
+      if (figuresOpen.length == data.figures.length && storage.figuresOpen) {
+        figuresOpen = storage.figuresOpen;
+      }
+      if (data.figures[storage.pi] && data.figures[storage.pi].list[storage.ci]) {
+        pi = storage.pi;
+        ci = storage.ci;
       }
     }
 
     // Set Storage
-    let s = Object.assign({}, state);
-    store.set(STORAGE_KEY, Object.assign(s, {
+    let newState = Object.assign({}, state, {
       bundle,
+      headHtml: data.headHtml,
       isTree,
       isInfo,
-      parentIndex,
-      childrenIndex,
-      figures: data.figures
-    }));
-    return {
-      bundle,
-      isTree,
-      isInfo,
-      parentIndex,
-      childrenIndex,
-      figures: data.figures
-    }
+      pi,
+      ci,
+      figures: data.figures,
+      figuresOpen
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   },
   changeTree: (index) => (state) => {
     // Set Storage
-    let s = Object.assign({}, state);
-    store.set(STORAGE_KEY, Object.assign(s, {
-      parentIndex: index[0],
-      childrenIndex: index[1],
-    }));
-    return {
-      parentIndex: index[0],
-      childrenIndex: index[1]
-    }
+    let newState = Object.assign({}, state, {
+      pi: index[0],
+      ci: index[1],
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   },
   toggleTree: () => state => {
     // Set Storage
-    let s = Object.assign({}, state);
-    store.set(STORAGE_KEY, Object.assign(s, {
+    let newState = Object.assign({}, state, {
       isTree: !state.isTree,
       isInfo: state.isInfo,
-    }));
-    return {
-      isTree: !state.isTree,
-      isInfo: state.isInfo,
-    }
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
+  },
+  toggleTreeAccordion: (pi) => state => {
+    let figuresOpen = state.figuresOpen;
+    figuresOpen[pi] = !figuresOpen[pi];
+    // Set Storage
+    let newState = Object.assign({}, state, {
+      figuresOpen
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   },
   toggleInfo: () => state => {
     // Set Storage
-    let s = Object.assign({}, state);
-    store.set(STORAGE_KEY, Object.assign(s, {
+    let newState = Object.assign({}, state, {
       isTree: state.isTree,
       isInfo: !state.isInfo,
-    }));
-    return {
-      isTree: state.isTree,
-      isInfo: !state.isInfo,
-    }
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   },
   moveFocusedTag: (dir) => state => {
 
-    let nextParentIndex = state.parentIndex;
-    let nextChildrenIndex = dir === 'up' ? state.childrenIndex - 1 : state.childrenIndex + 1;
+    let nextpi = state.pi;
+    let nextci = dir === 'up' ? state.ci - 1 : state.ci + 1;
 
-    if (nextChildrenIndex < 0) {
-      if (state.parentIndex - 1 < 0) {
-        nextParentIndex = state.parentIndex;
-        nextChildrenIndex = state.childrenIndex;
+    if (nextci < 0) {
+      if (state.pi - 1 < 0) {
+        nextpi = state.pi;
+        nextci = state.ci;
       } else {
-        nextParentIndex = nextParentIndex - 1;
-        nextChildrenIndex = state.figures[state.parentIndex - 1].list.length - 1;
+        nextpi = nextpi - 1;
+        nextci = state.figures[state.pi - 1].list.length - 1;
       }
-    } else if (nextChildrenIndex > state.figures[state.parentIndex].list.length - 1) {
-      if (state.parentIndex + 1 > state.figures.length - 1) {
-        nextParentIndex = state.parentIndex;
-        nextChildrenIndex = state.childrenIndex
+    } else if (nextci > state.figures[state.pi].list.length - 1) {
+      if (state.pi + 1 > state.figures.length - 1) {
+        nextpi = state.pi;
+        nextci = state.ci
       } else {
-        nextParentIndex = nextParentIndex + 1;
-        nextChildrenIndex = 0;
+        nextpi = nextpi + 1;
+        nextci = 0;
       }
     }
 
     // Set Storage
-    let s = Object.assign({}, state);
-    store.set(STORAGE_KEY, Object.assign(s, {
-      parentIndex: nextParentIndex,
-      childrenIndex: nextChildrenIndex,
-    }));
-
-    return {
-      parentIndex: nextParentIndex,
-      childrenIndex: nextChildrenIndex,
-    }
+    let newState = Object.assign({}, state, {
+      pi: nextpi,
+      ci: nextci,
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   }
 };
 

@@ -66,12 +66,12 @@ const inFig = require('@t4y3/fig');
 
 inFig.set('Button')
   .add('red', () => {
-      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+      return `<my-button type="{ type }" text="click"></my-button>`
     }, {
       type: 'red'
     })
   .add('blue', () => {
-      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+      return `<my-button type="{ type }" text="click"></my-button>`
     }, {
       type: 'blue'
     });

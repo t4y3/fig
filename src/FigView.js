@@ -12,8 +12,8 @@ const loadedCallback = (e) => {
   });
 }
 
-const getSrcTemplate = (figures, pi, ci, bundle) => {
-  let item = figures[pi].list[ci];
+const getSrcTemplate = (state, pi, ci) => {
+  let item = state.figures[pi].list[ci];
   let tag = item.template;
 
   let optsNames = item.template.match(/{(.*?)}/g);
@@ -29,18 +29,16 @@ const getSrcTemplate = (figures, pi, ci, bundle) => {
         let opts = JSON.stringify(item._opts[optsNames[k]]).replace(/"/g, `'`);
         tag = tag.replace(regexp, `$1${ opts }$2`);
       }
-
     }
   }
 
-  let js = `<scr${'i'}pt type="text/javascript" src="${ bundle }"></scr${'i'}pt>`;
-
-  // TODO: head.html
+  let js = `<scr${'i'}pt type="text/javascript" src="${ state.bundle }"></scr${'i'}pt>`;
   return `
     <!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
+        ${ state.headHtml }
         ${ js }
       </head>
       <body>
@@ -51,17 +49,17 @@ const getSrcTemplate = (figures, pi, ci, bundle) => {
     </html>`;
 };
 
-const FigView = ({ show, figures, pindex, cindex, bundle }) => (
-  <div className={`fig-view ${ show ? '': 'hide' }`}>
+const FigView = ({ state }) => (
+  <div className={`fig-view ${ state.isInfo ? 'hide': '' }`}>
     <div className="view-inner">
-    {figures.map((figure, pi) => {
+    {state.figures.map((figure, pi) => {
       return figure.list.map((data, ci) => {
         return (
           <iframe
             width="100%"
             sandbox="allow-scripts allow-same-origin"
-            className={`view-frame ${ pindex == pi && cindex == ci ? '': 'hide'}`}
-            srcdoc={ getSrcTemplate(figures, pi, ci, bundle) }
+            className={`view-frame ${ state.pi == pi && state.ci == ci ? '': 'hide'}`}
+            srcdoc={ getSrcTemplate(state, pi, ci) }
             onload={ (e) => { loadedCallback(e) } }>
           </iframe>
         )

@@ -22,8 +22,8 @@
       flex-direction: column;
 
       .app-right-top {
+        display: flex;
         flex: 1;
-        padding: 16px;
       }
 
       .app-right-bottom {

@@ -2,7 +2,10 @@
   display: block;
   height: 100%;
   background: #fff;
-  border: 1px solid #c1c1c1;
+  border-left: 1px solid #c1c1c1;
+  // flex: 0 1 640px;
+  flex: 0 1;
+  position: relative;
 
   .info-title {
     padding: 8px 0;
@@ -27,13 +30,16 @@
       font-size: 2rem;
       border-bottom: 1px solid #eee;
     }
+
+    pre {
+      overflow: scroll;
+    }
   }
 
   .opts-inner {
     width: 100%;
     margin: 20px auto;
     font-size: 1.4rem;
-    overflow: scroll;
 
     p {
       padding: 8px 0;
@@ -42,15 +48,54 @@
       border-bottom: 1px solid #eee;
     }
 
-    table {
+    .table-inner {
       width: 100%;
-      font-size: 18px;
+      overflow: scroll;
 
-      th, td {
-        padding: 8px;
-        border: 1px solid #c1c1c1;
+      table {
+        width: 100%;
+        font-size: 18px;
+
+        th, td {
+          padding: 8px;
+          border: 1px solid #c1c1c1;
+        }
       }
     }
   }
 
+  .sidebar-gutter {
+    width: 30px;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    bottom: 0;
+    cursor: ew-resize;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 30px;
+      background-image: linear-gradient(90deg, #888, #888 1px, transparent 2px, transparent 5px);
+      background-size: 4px;
+      position: fixed;
+      position: sticky;
+      top: 50vh;
+      left: 0;
+      margin-left: 10px;
+      opacity: 1;
+      pointer-events: none;
+    }
+  }
+
+  .sidebar-gutter--dummy {
+    opacity: 0;
+    width: 30px;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    bottom: 0;
+    cursor: ew-resize;
+  }
 }

@@ -64,8 +64,8 @@ table {
       display: flex;
       flex-direction: column; }
       .fig-app .app-inner .app-right .app-right-top {
-        flex: 1;
-        padding: 16px; }
+        display: flex;
+        flex: 1; }
       .fig-app .app-inner .app-right .app-right-bottom {
         flex: 0;
         max-height: 50%;
@@ -91,7 +91,9 @@ table {
   display: block;
   height: 100%;
   background: #fff;
-  border: 1px solid #c1c1c1; }
+  border-left: 1px solid #c1c1c1;
+  flex: 0 1;
+  position: relative; }
   .fig-info .info-title {
     padding: 8px 0;
     font-size: 2.4rem;
@@ -109,22 +111,55 @@ table {
       margin-bottom: 16px;
       font-size: 2rem;
       border-bottom: 1px solid #eee; }
+    .fig-info .code-inner pre {
+      overflow: scroll; }
   .fig-info .opts-inner {
     width: 100%;
     margin: 20px auto;
-    font-size: 1.4rem;
-    overflow: scroll; }
+    font-size: 1.4rem; }
     .fig-info .opts-inner p {
       padding: 8px 0;
       margin-bottom: 16px;
       font-size: 2rem;
       border-bottom: 1px solid #eee; }
-    .fig-info .opts-inner table {
+    .fig-info .opts-inner .table-inner {
       width: 100%;
-      font-size: 18px; }
-      .fig-info .opts-inner table th, .fig-info .opts-inner table td {
-        padding: 8px;
-        border: 1px solid #c1c1c1; }
+      overflow: scroll; }
+      .fig-info .opts-inner .table-inner table {
+        width: 100%;
+        font-size: 18px; }
+        .fig-info .opts-inner .table-inner table th, .fig-info .opts-inner .table-inner table td {
+          padding: 8px;
+          border: 1px solid #c1c1c1; }
+  .fig-info .sidebar-gutter {
+    width: 30px;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    bottom: 0;
+    cursor: ew-resize; }
+    .fig-info .sidebar-gutter:after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 30px;
+      background-image: linear-gradient(90deg, #888, #888 1px, transparent 2px, transparent 5px);
+      background-size: 4px;
+      position: fixed;
+      position: sticky;
+      top: 50vh;
+      left: 0;
+      margin-left: 10px;
+      opacity: 1;
+      pointer-events: none; }
+  .fig-info .sidebar-gutter--dummy {
+    opacity: 0;
+    width: 30px;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    bottom: 0;
+    cursor: ew-resize; }
 
 .fig-tree {
   display: flex;
@@ -152,7 +187,8 @@ table {
       align-items: center;
       padding: 8px 8px;
       position: relative;
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      border-bottom: 1px solid #eee; }
       .fig-tree .list__item .tag-title i {
         margin-left: auto;
         font-size: 18px; }
@@ -176,12 +212,11 @@ table {
 
 .fig-view {
   display: block;
-  height: 100%; }
+  height: 100%;
+  flex: 1; }
   .fig-view .view-inner {
     height: 100%;
-    background: #fff;
-    position: relative;
-    border: 1px solid #c1c1c1; }
+    position: relative; }
   .fig-view .view-frame {
     display: block;
     height: 100%; }

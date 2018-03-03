@@ -6,7 +6,7 @@ let state = {
   bundle: '',
   headHtml: '',
   isTree: true,
-  isInfo: false,
+  isInfo: true,
   pi: 0,  // parentIndex
   ci: 0,  // childrenIndex
   figures: [],

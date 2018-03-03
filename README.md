@@ -3,7 +3,8 @@ Fig - library for gallery of Riot tag
 https://www.npmjs.com/package/@t4y3/fig
 
 ## Capture
-![fig-sample](https://user-images.githubusercontent.com/9010553/36212907-89d063ae-11e8-11e8-8076-56582beae906.png)
+![fig-sample](https://user-images.githubusercontent.com/9010553/36936503-bef2f4b6-1f49-11e8-8380-39ba51568fad.png)
+
 
 
 ## Description

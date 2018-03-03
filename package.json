@@ -7,6 +7,7 @@
   },
   "main": "infig/main.js",
   "scripts": {
+    "start": "npm --prefix example/ run start",
     "build": "run-s build:*",
     "build:js": "rollup -c",
     "build:css": "node-sass src/scss -o dist/css",

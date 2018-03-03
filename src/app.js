@@ -19,11 +19,21 @@ Mousetrap.bind(KEY_EVENTS.TOGGLE_TREE, () => {
 });
 
 // move focused tag
-Mousetrap.bind(KEY_EVENTS.MOVE_DOWN, () => {
+Mousetrap.bind(KEY_EVENTS.MOVE_DOWN, (e) => {
+  e.preventDefault();
   main.moveFocusedTag('down');
 });
-Mousetrap.bind(KEY_EVENTS.MOVE_UP, () => {
+Mousetrap.bind(KEY_EVENTS.MOVE_UP, (e) => {
+  e.preventDefault();
   main.moveFocusedTag('up');
+});
+Mousetrap.bind(KEY_EVENTS.MOVE_LEFT, (e) => {
+  e.preventDefault();
+  main.openTreeAccordion(false);
+});
+Mousetrap.bind(KEY_EVENTS.MOVE_RIGHT, (e) => {
+  e.preventDefault();
+  main.openTreeAccordion(true);
 });
 
 // Root view

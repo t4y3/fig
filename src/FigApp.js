@@ -17,7 +17,7 @@ const FigApp = ({ state, actions }) => (
         <FigHeader state={ state } />
         <div className="app-right-top">
           <FigView state={ state } />
-          <FigInfo state={ state } />
+          <FigInfo state={ state } action={ actions } />
         </div>
       </div>
     </div>

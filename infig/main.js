@@ -26,6 +26,10 @@ class InFig {
   getFigures() {
     return this.figures;
   }
+
+  reset() {
+    this.figures = [];
+  }
 }
 
 module.exports = new InFig();

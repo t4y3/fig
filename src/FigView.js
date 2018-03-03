@@ -7,9 +7,9 @@ const loadedCallback = (e) => {
   link.type = 'text/css';
   link.rel = 'stylesheet';
   iframeDocument.querySelector('head').appendChild(link);
-  iframeDocument.addEventListener('click', () => {
-    window.focus();
-  });
+  // iframeDocument.addEventListener('click', () => {
+  //   window.focus();
+  // });
 }
 
 const getSrcTemplate = (state, pi, ci) => {
@@ -41,16 +41,12 @@ const getSrcTemplate = (state, pi, ci) => {
         ${ state.headHtml }
         ${ js }
       </head>
-      <body>
-        <div class="fig-inner fig-inner--center">
-        ${ tag }
-        </div>
-      </body>
+      <body><div class="fig-inner fig-inner--center">${ tag }</div></body>
     </html>`;
 };
 
 const FigView = ({ state }) => (
-  <div className={`fig-view ${ state.isInfo ? 'hide': '' }`}>
+  <div className={`fig-view`}>
     <div className="view-inner">
     {state.figures.map((figure, pi) => {
       return figure.list.map((data, ci) => {

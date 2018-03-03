@@ -107,6 +107,24 @@ const actions = {
     });
     store.set(STORAGE_KEY, newState);
     return newState;
+  },
+  openTreeAccordion: (flag) => state => {
+    let figuresOpen = state.figuresOpen;
+    figuresOpen[state.pi] = flag;
+    // Set Storage
+    let newState = Object.assign({}, state, {
+      figuresOpen
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
+  },
+  updateInfoWidth: (w) => state => {
+    // Set Storage
+    let newState = Object.assign({}, state, {
+      infoWidth: w
+    });
+    store.set(STORAGE_KEY, newState);
+    return newState;
   }
 };
 

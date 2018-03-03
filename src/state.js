@@ -11,6 +11,7 @@ let state = {
   ci: 0,  // childrenIndex
   figures: [],
   figuresOpen: [],
+  infoWidth: 400
 };
 
 export default state;

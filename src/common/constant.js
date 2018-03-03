@@ -4,6 +4,8 @@ export const KEY_EVENTS = {
   TOGGLE_INFO: 'command+shift+right',
   MOVE_UP: 'up',
   MOVE_DOWN: 'down',
+  MOVE_LEFT: 'left',
+  MOVE_RIGHT: 'right',
 };
 
 // Storage Key

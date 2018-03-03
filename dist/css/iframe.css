@@ -47,7 +47,4 @@ html, body {
   height: 100%; }
 
 .fig-inner--center {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
+  padding: 40px; }

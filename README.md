@@ -5,8 +5,6 @@ https://www.npmjs.com/package/@t4y3/fig
 ## Capture
 ![fig-sample](https://user-images.githubusercontent.com/9010553/36212907-89d063ae-11e8-11e8-8076-56582beae906.png)
 
-![fig-sample](https://user-images.githubusercontent.com/9010553/36212906-89978034-11e8-11e8-8774-0c25e2f74ac3.png)
-
 
 ## Description
 Mount the custom tag specified in tags in the iframe.  
@@ -37,16 +35,15 @@ path/to/fig.js
 Set the following rule in `.fig/config.js`.
 
 ```js
-const inFig = require('@t4y3/fig');
-
-require('./path/to/components1/fig.js');
-require('./path/to/components2/fig.js');
-require('./path/to/components3/fig.js');
-
 module.exports = {
   'bundle': 'dist/bundle.js',
-  'figures': inFig.getFigures()
+  'figures': [
+    'path/to/components1/fig.js',
+    'path/to/components2/fig.js',
+    'path/to/components3/fig.js'
+  ]
 };
+
 
 ```
 - `bundle` - files required to display custom tags
@@ -62,16 +59,16 @@ module.exports = {
 ### `fig.js`.
 
 ```js
-const inFig = require('@t4y3/fig');
+const InFig = require('@t4y3/fig');
 
-inFig.set('Button')
+InFig.set('Button')
   .add('red', () => {
-      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+      return `<my-button type="{ type }" text="click"></my-button>`
     }, {
       type: 'red'
     })
   .add('blue', () => {
-      return `<my-button type="{ _opts.type }" text="click"></my-button>`
+      return `<my-button type="{ type }" text="click"></my-button>`
     }, {
       type: 'blue'
     });

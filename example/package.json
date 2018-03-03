@@ -1,0 +1,16 @@
+{
+  "name": "fig-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "fig-start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fig": "../"
+  },
+  "devDependencies": {}
+}

@@ -7,9 +7,9 @@ const loadedCallback = (e) => {
   link.type = 'text/css';
   link.rel = 'stylesheet';
   iframeDocument.querySelector('head').appendChild(link);
-  iframeDocument.addEventListener('click', () => {
-    window.focus();
-  });
+  // iframeDocument.addEventListener('click', () => {
+  //   window.focus();
+  // });
 }
 
 const getSrcTemplate = (state, pi, ci) => {

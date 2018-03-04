@@ -4,7 +4,6 @@
 let fs = require('fs');
 let http = require('http');
 let browserSync = require("browser-sync");
-let chokidar = require('chokidar');
 let InFig = require('./infig/main');
 
 // Constant

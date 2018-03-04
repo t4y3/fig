@@ -30,8 +30,7 @@
   },
   "homepage": "https://github.com/t4y3/fig#readme",
   "dependencies": {
-    "browser-sync": "^2.23.6",
-    "chokidar": "^2.0.2"
+    "browser-sync": "^2.23.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

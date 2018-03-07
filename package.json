@@ -3,7 +3,8 @@
   "version": "0.1.5",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
-    "fig-start": "index.js"
+    "fig-start": "index.js",
+    "fig-build": "build.js"
   },
   "main": "infig/main.js",
   "scripts": {
@@ -30,7 +31,8 @@
   },
   "homepage": "https://github.com/t4y3/fig#readme",
   "dependencies": {
-    "browser-sync": "^2.23.6"
+    "browser-sync": "^2.23.6",
+    "fs-extra": "^5.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

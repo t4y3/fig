@@ -1,0 +1,100 @@
+.jsonView {
+  margin-left: 20px;
+  font-family: Consolas, "Lucida Console", Menlo, "dejavu sans mono", monospace;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 2px;
+  cursor: default;
+  color: #424242;
+  white-space: nowrap;
+  -webkit-user-select: none; }
+
+.jsonView > div {
+  display: inline-block; }
+
+.jsonView > .children, .jsonView.insert {
+  display: block; }
+
+.jsonView > .name {
+  color: #881391; }
+
+.jsonView > .separator:before {
+  content: ":"; }
+
+.jsonView > .separator {
+  padding-right: 5px; }
+
+.jsonView > .value.null {
+  color: gray; }
+
+.jsonView > .value.boolean, .jsonView > .value.number {
+  color: #1c00cf; }
+
+.jsonView > .value.string:not(.edit):before, .jsonView > .value.string:not(.edit):after {
+  content: "\""; }
+
+.jsonView > .value.string {
+  color: #c41a16; }
+
+.jsonView > .name:hover, .jsonView > .value:hover {
+  background-color: rgba(56, 121, 217, 0.1); }
+
+.jsonView > .expand, .jsonView > .collapse {
+  min-width: 20px;
+  margin-left: -20px;
+  cursor: pointer; }
+
+.jsonView > .expand:before {
+  content: '\25B6'; }
+
+.jsonView > .collapse:before {
+  content: '\25BC'; }
+
+.jsonView > .edit {
+  padding: 0px 5px 0px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent; }
+
+.jsonView > .edit br {
+  display: none; }
+
+.jsonView > .edit * {
+  display: inline;
+  white-space: nowrap; }
+
+.jsonView > .value.edit {
+  color: black; }
+
+.jsonView > .delete:before {
+  content: 'X'; }
+
+.jsonView > .delete {
+  opacity: 0;
+  display: inline;
+  padding: 3px;
+  margin-left: 20px;
+  cursor: pointer;
+  color: #969696; }
+
+.jsonView > .delete:hover {
+  opacity: 1;
+  color: black;
+  background: gainsboro; }
+
+.jsonView > .insert:before {
+  content: '+'; }
+
+.jsonView > .insert {
+  display: none;
+  color: #969696;
+  cursor: pointer; }
+
+.jsonView.expanded > .insert, .jsonView.expanded > .insert {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 3px; }
+
+.jsonView > .insert:hover {
+  color: black;
+  background: gainsboro; }

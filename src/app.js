@@ -45,7 +45,7 @@ const view = (state, actions) => (
 let main;
 window.addEventListener('DOMContentLoaded', () => {
   main = app(state, actions, view, document.body);
-  fetch('http://localhost:8081', {
+  fetch(`fig.config.json`, {
     mode: 'cros'
   }).then((response) => {
     return response.json();

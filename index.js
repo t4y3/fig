@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // require the module as normal
-let fs = require('fs');
+let fs = require('fs-extra');
 let http = require('http');
 let browserSync = require("browser-sync");
 let InFig = require('./infig/main');
@@ -42,6 +42,9 @@ const loadConfigFile = () => {
     // but you also get any other error
   }
   config.headHtml = headHtml;
+  let c = Object.assign({}, config);
+  c.figures = InFig.getFigures();
+  fs.writeFile(`${ __dirname }/dist/fig.config.json`, JSON.stringify(c, null, '  '));
 };
 
 
@@ -52,20 +55,6 @@ const loadConfigFile = () => {
 loadConfigFile();
 deleteCache();
 
-/**
- * Setting Server
- */
-// Start the json server
-let listener = (req, res) => {
-  res.writeHead(200, {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
-  });
-  let c = Object.assign({}, config);
-  c.figures = InFig.getFigures();
-  res.end(JSON.stringify(c));
-};
-let server = http.createServer(listener).listen(8081);
 
 // Start the server
 browserSync({

@@ -1,0 +1,249 @@
+{
+  "bundle": "",
+  "figures": [
+    {
+      "name": "Button",
+      "list": [
+        {
+          "name": "Default",
+          "template": "<material-button class=\"ui\"><div class=\"text\">BUTTON</div></material-button>",
+          "_opts": {}
+        },
+        {
+          "name": "Custom",
+          "template": "\n<material-button class=\"ui\" waves-color=\"#000\" shady=\"true\" style=\"background:#ed7ff4; height: 50px; line-height: 46px\">\n    <div class=\"text\">ICON</div>\n    <i class=\"material-icons\">create</i>\n</material-button>",
+          "_opts": {}
+        },
+        {
+          "name": "Rounded",
+          "template": "\n<material-button class=\"ui\" waves-center=\"true\" rounded=\"true\" waves-opacity=\"0.6\" waves-duration=\"600\" style=\"background:#f43137\">\n    <i class=\"material-icons\">add</i>\n</material-button>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Disabled",
+          "template": "\n<material-button class=\"ui\" disabled=\"true\">\n    <div class=\"text\">Disabled</div>\n</material-button>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-checkbox name=\"checker\">\n    Label\n</material-checkbox>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Disabled",
+          "template": "\n<material-checkbox disabled=\"true\">\n    Disabled\n</material-checkbox>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "ComboBox",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-combo  defaultText=\"Select one\">\n    <option value=\"1\">One</option>\n    <option value=\"2\">Two</option>\n</material-combo>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Dropdown",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-dropdown>\n    <p>DropDown content</p>\n</material-dropdown>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Changed animation",
+          "template": "\n<material-dropdown animation=\"bottom\">\n    <p>DropDown content</p>\n</material-dropdown>\n  ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Dropdown List",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-dropdown-list items=\"{ items }\"></material-dropdown-list>\n      ",
+          "_opts": {
+            "items": [
+              {
+                "title": "One"
+              },
+              {
+                "title": "Two"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Changed animation",
+          "template": "\n<material-dropdown-list items=\"{ items }\"></material-dropdown-list>\n  ",
+          "_opts": {
+            "items": [
+              {
+                "title": "One",
+                "link": "#one"
+              },
+              {
+                "title": "Two",
+                "link": "#two"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-input placeholder=\"Just input\"></material-input>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Icon",
+          "template": "\n<material-input icon=\"true\" waves-color=\"#2f6975\" label=\"Icon input\">\n    <i class=\"material-icons\">search</i>\n</material-input>\n  ",
+          "_opts": {}
+        },
+        {
+          "name": "Validation by type",
+          "template": "\n<material-input type=\"email\" label=\"Email\"></material-input>\n  ",
+          "_opts": {}
+        },
+        {
+          "name": "Custom validation",
+          "template": "\n<material-input valid=\"/^d+$/\" label=\"Numbers only\"></material-input>\n  ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Navbar",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-navbar>\n    <div class=\"logo\"><a href=\"#\">Logo</a></div>\n</material-navbar>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Custom styling",
+          "template": "\n<material-navbar style=\"background: #ccc;\" >\n    <div class=\"logo\"><a href=\"#\">Logo</a></div>\n</material-navbar>\n  ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Pane",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-pane>\n    <div class=\"material-pane-left-bar\">\n        <material-button rounded=\"true\">\n            <i class=\"material-icons\">arrow_back</i>\n        </material-button>\n    </div>\n    <div class=\"material-pane-title\">TITLE</div>\n    <div class=\"material-pane-right-bar\">\n        <material-button rounded=\"true\">\n            <i class=\"material-icons\">more_vert</i>\n        </material-button>\n    </div>\n    <div class=\"material-pane-content\">\n        CONTENT\n    </div>\n</material-pane>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Popup",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-popup>\n    <p>Content</p>\n</material-popup>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Popup With Title",
+          "template": "\n<material-popup>\n    <div class=\"material-popup-title\">Title</div>\n    <p>Content</p>\n</material-popup>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Toast",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-snackbar></material-snackbar>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Error Toast",
+          "template": "\n<material-snackbar></material-snackbar>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Tabs",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-tabs tabs=\"{ tabs }\"></material-tabs>\n      ",
+          "_opts": {
+            "tabs": [
+              {
+                "title": "ONE"
+              },
+              {
+                "title": "TWO"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Error Toast",
+          "template": "\n<material-tabs useLine=\"true\" tabs=\"{ tabs }\"></material-tabs>\n      ",
+          "_opts": {
+            "tabs": [
+              {
+                "title": "ONE"
+              },
+              {
+                "title": "TWO"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-textarea label=\"Textarea\" ></material-textarea>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Max rows count is 2",
+          "template": "\n<material-textarea max-rows=\"2\" label=\"Max rows count is 2\"></material-textarea>\n      ",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Spinner",
+      "list": [
+        {
+          "name": "Default",
+          "template": "\n<material-spinner></material-spinner>\n      ",
+          "_opts": {}
+        },
+        {
+          "name": "Spinner with changed stroke width",
+          "template": "\n<material-spinner strokewidth=\"7\"></material-spinner>\n      ",
+          "_opts": {}
+        }
+      ]
+    }
+  ],
+  "headHtml": "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>\n<link href=\"https://cdn.jsdelivr.net/npm/riot-mui@0.1.1/build/styles/riot-mui.min.css\" rel=\"stylesheet\">\n<script src=\"https://cdn.jsdelivr.net/riot/3.3.2/riot+compiler.min.js\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/riot-mui@0.1.1/build/js/riot-mui-min.min.js\"></script>\n<script>\n  window.addEventListener('DOMContentLoaded',function() {\n    riot.mount('*');\n  });\n</script>\n"
+}

@@ -93,7 +93,8 @@ table {
   background: #fff;
   border-left: 1px solid #c1c1c1;
   flex: 0 1;
-  position: relative; }
+  position: relative;
+  overflow: scroll; }
   .fig-info .info-title {
     padding: 8px 0;
     font-size: 2.4rem;

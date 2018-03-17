@@ -2,6 +2,9 @@
 Fig - library for gallery of Riot tag  
 https://www.npmjs.com/package/@t4y3/fig
 
+## Demo
+- https://fig-example.netlify.com/
+
 ## Capture
 ![fig-sample](https://user-images.githubusercontent.com/9010553/36936503-bef2f4b6-1f49-11e8-8380-39ba51568fad.png)
 

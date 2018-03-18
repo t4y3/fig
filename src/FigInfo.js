@@ -12,14 +12,14 @@ const format = (e, data, key) => {
 
 
 let startX = 0;
-let infoWidth = 0;
-
+let infoWidth = 600;
+let startWidth = 0;
 /**
  * Drag Start
  */
 const onDragstart = (e, state, action) => {
   startX = e.clientX;
-  infoWidth = state.infoWidth;
+  startWidth = infoWidth;
 };
 
 /**
@@ -27,15 +27,18 @@ const onDragstart = (e, state, action) => {
  */
 const onDrag = (e, state, action) => {
   e.preventDefault();
-  let w = infoWidth + (startX - e.clientX);
+  let w = startWidth + (startX - e.clientX);
   if (e.clientX === 0 || w <= 300) {
     return;
   }
-  action.updateInfoWidth(w);
+  infoWidth = w;
+  let dom = document.getElementById('fig-info');
+  dom.style.flexBasis = `${ w }px`;
+  dom.style.maxWidth = `${ w }px`;
 }
 
 const FigInfo = ({ state, action }) => (
-  <div id="fig-info" className={`fig-info ${ state.isInfo ? '': 'hide' }`} style={ { flexBasis: state.infoWidth + 'px', maxWidth: state.infoWidth + 'px' } }>
+  <div id="fig-info" className={`fig-info ${ state.isInfo ? '': 'hide' }`}>
     <div className="info-inner">
       <div className="info-title">{ state.figures[state.pi].name } - { state.figures[state.pi].list[state.ci].name }</div>
       <div className="code-inner">

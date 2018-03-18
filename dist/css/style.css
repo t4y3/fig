@@ -92,7 +92,7 @@ table {
   height: 100%;
   background: #fff;
   border-left: 1px solid #c1c1c1;
-  flex: 0 1;
+  flex: 0 1 600px;
   position: relative;
   overflow: scroll; }
   .fig-info .info-title {
@@ -149,7 +149,7 @@ table {
       position: fixed;
       position: sticky;
       top: 50vh;
-      left: 0;
+      left: 2px;
       margin-left: 10px;
       opacity: 1;
       pointer-events: none; }

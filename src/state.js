@@ -10,8 +10,7 @@ let state = {
   pi: 0,  // parentIndex
   ci: 0,  // childrenIndex
   figures: [],
-  figuresOpen: [],
-  infoWidth: 400
+  figuresOpen: []
 };
 
 export default state;

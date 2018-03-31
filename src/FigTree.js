@@ -2,12 +2,12 @@ import { h, app } from "hyperapp"
 
 const FigTree = ({ state, action }) => (
   <div className="fig-tree">
-    <div className="title">Fig</div>
+    <div className="title">{ state.title }</div>
     <ul className="list">
       {state.figures.map((figure, pi) => {
         return (
           <li className="list__item">
-            <p className="tag-title" onclick={ () => { action.toggleTreeAccordion(pi) } }>{ figure.name }
+            <p className={`tag-title ${ pi == state.pi ? 'tag-title--active' : '' }`} onclick={ () => { action.toggleTreeAccordion(pi) } }>{ figure.name }
               <i className={`material-icons ${ state.figuresOpen[pi] ? 'hide': '' }`}>keyboard_arrow_right</i>
               <i className={`material-icons ${ state.figuresOpen[pi] ? '': 'hide' }`}>keyboard_arrow_down</i>
             </p>

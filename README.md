@@ -40,6 +40,7 @@ Set the following rule in `.fig/config.js`.
 
 ```js
 module.exports = {
+  'title': 'Fig Example',
   'bundle': 'dist/bundle.js',
   'figures': [
     'path/to/components1/fig.js',
@@ -50,6 +51,8 @@ module.exports = {
 
 
 ```
+- `title` - Title of the Styleguide
+  - default: `Fig`
 - `bundle` - files required to display custom tags
 
 ### .fig/head.html
@@ -83,3 +86,4 @@ InFig.set('Button')
 - `command + shift + ←` - Toggle Tree View
 - `commnad + shift + →` - Toggle Info View
 - `↑ or ↓` - Change View Custom Tag
+- `← or →` - Toggle Accordion

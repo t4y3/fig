@@ -2,6 +2,9 @@ import store from 'store';
 import { STORAGE_KEY } from './common/constant';
 
 const actions = {
+  /**
+   * Init
+   */
   initState: (data) => (state) => {
     let storage = store.get(STORAGE_KEY);
     let bundle = data.bundle;
@@ -13,6 +16,7 @@ const actions = {
     for (let i = 0; i < data.figures.length; i++) {
       figuresOpen[i] = true;
     }
+    let title = data.title || state.title;
 
     if (storage) {
       isTree = storage.isTree;
@@ -35,11 +39,16 @@ const actions = {
       pi,
       ci,
       figures: data.figures,
-      figuresOpen
+      figuresOpen,
+      title
     });
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Change Tree Active
+   */
   changeTree: (index) => (state) => {
     // Set Storage
     let newState = Object.assign({}, state, {
@@ -49,6 +58,10 @@ const actions = {
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Toggle Tree Display
+   */
   toggleTree: () => state => {
     // Set Storage
     let newState = Object.assign({}, state, {
@@ -58,6 +71,10 @@ const actions = {
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Toggle Accordion
+   */
   toggleTreeAccordion: (pi) => state => {
     let figuresOpen = state.figuresOpen;
     figuresOpen[pi] = !figuresOpen[pi];
@@ -68,6 +85,10 @@ const actions = {
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Toggle Info Display
+   */
   toggleInfo: () => state => {
     // Set Storage
     let newState = Object.assign({}, state, {
@@ -77,6 +98,10 @@ const actions = {
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Move Foucused Components
+   */
   moveFocusedTag: (dir) => state => {
 
     let nextpi = state.pi;
@@ -108,6 +133,10 @@ const actions = {
     store.set(STORAGE_KEY, newState);
     return newState;
   },
+
+  /**
+   * Open Accordion
+   */
   openTreeAccordion: (flag) => state => {
     let figuresOpen = state.figuresOpen;
     figuresOpen[state.pi] = flag;

@@ -2,7 +2,7 @@ import { h, app } from "hyperapp"
 
 const FigTree = ({ state, action }) => (
   <div className="fig-tree">
-    <div className="title">Fig</div>
+    <div className="title">{ state.title }</div>
     <ul className="list">
       {state.figures.map((figure, pi) => {
         return (

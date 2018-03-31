@@ -160,9 +160,11 @@ table {
       width: 100%;
       overflow: scroll; }
       .fig-info .opts-inner .table-inner table {
+        table-layout: fixed;
         width: 100%;
         font-size: 18px; }
         .fig-info .opts-inner .table-inner table th, .fig-info .opts-inner .table-inner table td {
+          overflow: scroll;
           padding: 8px;
           border: 1px solid #c1c1c1; }
   .fig-info .sidebar-gutter {

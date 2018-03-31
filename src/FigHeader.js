@@ -15,7 +15,6 @@ const FigHeader = ({ state }) => (
     <i className="material-icons md-18">pageview</i>
     <span className="header-text">{ state.figures[state.pi].name } - { state.figures[state.pi].list[state.ci].name }</span>
     <div className="header-logo">
-      <a className="header-logo__link" href="https://github.com/t4y3/fig" target="_blank">GitHub</a>
       <i className="header-logo__keybord material-icons" onclick={ openDialog }>keyboard</i>
     </div>
     <dialog id="modal-shortcuts" className="modal-shortcuts" onclick={ closeDialog }>
@@ -23,6 +22,7 @@ const FigHeader = ({ state }) => (
       <p className="modal-shortcuts__item"><span>⌘ ⇧ ←</span>Toggle Tree View</p>
       <p className="modal-shortcuts__item"><span>⌘ ⇧ →</span>Toggle Info View</p>
       <p className="modal-shortcuts__item"><span>↑ or ↓</span>Change View Custom Tag</p>
+      <p className="modal-shortcuts__item"><span>← or →</span>Toggke Accordion</p>
     </dialog>
   </div>
 )

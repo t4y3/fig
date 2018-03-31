@@ -53,10 +53,12 @@
       overflow: scroll;
 
       table {
+        table-layout: fixed;
         width: 100%;
         font-size: 18px;
 
         th, td {
+          overflow: scroll;
           padding: 8px;
           border: 1px solid #c1c1c1;
         }

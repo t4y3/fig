@@ -22,7 +22,7 @@ const FigHeader = ({ state }) => (
       <p className="modal-shortcuts__item"><span>⌘ ⇧ ←</span>Toggle Tree View</p>
       <p className="modal-shortcuts__item"><span>⌘ ⇧ →</span>Toggle Info View</p>
       <p className="modal-shortcuts__item"><span>↑ or ↓</span>Change View Custom Tag</p>
-      <p className="modal-shortcuts__item"><span>← or →</span>Toggke Accordion</p>
+      <p className="modal-shortcuts__item"><span>← or →</span>Toggle Accordion</p>
     </dialog>
   </div>
 )

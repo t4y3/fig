@@ -7,7 +7,7 @@ const FigTree = ({ state, action }) => (
       {state.figures.map((figure, pi) => {
         return (
           <li className="list__item">
-            <p className="tag-title" onclick={ () => { action.toggleTreeAccordion(pi) } }>{ figure.name }
+            <p className={`tag-title ${ pi == state.pi ? 'tag-title--active' : '' }`} onclick={ () => { action.toggleTreeAccordion(pi) } }>{ figure.name }
               <i className={`material-icons ${ state.figuresOpen[pi] ? 'hide': '' }`}>keyboard_arrow_right</i>
               <i className={`material-icons ${ state.figuresOpen[pi] ? '': 'hide' }`}>keyboard_arrow_down</i>
             </p>

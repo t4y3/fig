@@ -1,3 +1,6 @@
+// fetch polyfill
+import 'whatwg-fetch';
+
 import { h, app } from "hyperapp"
 import FigApp from './FigApp'
 
@@ -45,9 +48,8 @@ const view = (state, actions) => (
 let main;
 window.addEventListener('DOMContentLoaded', () => {
   main = app(state, actions, view, document.body);
-  fetch(`fig.config.json`, {
-    mode: 'cros'
-  }).then((response) => {
+  fetch(`fig.config.json`)
+  .then((response) => {
     return response.json();
   }).then((data) => {
     main.initState(data);

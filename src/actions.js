@@ -30,6 +30,20 @@ const actions = {
       }
     }
 
+    // get params
+    let params = location.search.substring(1).split('&');
+    let paramsKv = {};
+    for (let i = 0; params[i]; i++) {
+      let kv = params[i].split('=');
+      paramsKv[kv[0]] = kv[1];
+    }
+    if (paramsKv['pi'] && paramsKv['ci']) {
+      if (data.figures[paramsKv['pi']] && data.figures[paramsKv['pi']].list[paramsKv['ci']]) {
+        pi = paramsKv['pi'];
+        ci = paramsKv['ci'];
+      }
+    }
+
     // Set Storage
     let newState = Object.assign({}, state, {
       bundle,
@@ -56,6 +70,9 @@ const actions = {
       ci: index[1],
     });
     store.set(STORAGE_KEY, newState);
+
+    // set params
+    window.history.pushState({}, null, `?pi=${ index[0] }&ci=${ index[1] }`);
     return newState;
   },
 
@@ -131,6 +148,9 @@ const actions = {
       ci: nextci,
     });
     store.set(STORAGE_KEY, newState);
+
+    // set params
+    window.history.pushState({}, null, `?pi=${ nextpi }&ci=${ nextci }`);
     return newState;
   },
 

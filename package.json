@@ -51,6 +51,7 @@
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-plugin-uglify": "^3.0.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "whatwg-fetch": "^2.0.4"
   }
 }

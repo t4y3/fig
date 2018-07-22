@@ -1,2 +1,2 @@
-import JSONView from 'json-view';
-window.JSONView = JSONView;
+import DomJsonTree from 'dom-json-tree';
+window.DomJsonTree = DomJsonTree;

@@ -4,10 +4,8 @@ import { h, app } from "hyperapp";
  * format opts value
  */
 const format = (e, data, key) => {
-  let view = new JSONView(key, data);
-  view.expand(true);
-  e.innerHTML = '';
-  e.appendChild(view.dom);
+  let djt = new DomJsonTree(data, e);
+  djt.rendar();
 };
 
 

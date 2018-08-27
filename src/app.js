@@ -1,17 +1,19 @@
 // fetch polyfill
 import 'whatwg-fetch';
 
-import { h, app } from "hyperapp"
-import FigApp from './FigApp'
+import { h, app } from 'hyperapp';
+import Mousetrap from 'mousetrap';
+import FigApp from './FigApp';
 
 import { KEY_EVENTS } from './common/constant';
-import Mousetrap from 'mousetrap';
 
 // Init Store
 import state from './state';
 
 // Setting Actions
 import actions from './actions';
+
+let main;
 
 Mousetrap.bind(KEY_EVENTS.TOGGLE_INFO, () => {
   main.toggleInfo();
@@ -40,18 +42,14 @@ Mousetrap.bind(KEY_EVENTS.MOVE_RIGHT, (e) => {
 });
 
 // Root view
-const view = (state, actions) => (
-  <FigApp state={ state } actions={ actions } />
-)
+const view = (_state, _actions) => <FigApp state={_state} actions={_actions} />;
 
 // Entry(browser)
-let main;
 window.addEventListener('DOMContentLoaded', () => {
   main = app(state, actions, view, document.body);
-  fetch(`fig.config.json`)
-  .then((response) => {
-    return response.json();
-  }).then((data) => {
-    main.initState(data);
-  });
+  fetch('fig.config.json')
+    .then(response => response.json())
+    .then((data) => {
+      main.initState(data);
+    });
 });

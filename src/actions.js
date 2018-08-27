@@ -5,47 +5,43 @@ const actions = {
   /**
    * Init
    */
-  initState: (data) => (state) => {
-    let storage = store.get(STORAGE_KEY);
-    let bundle = data.bundle;
-    let isTree = state.isTree;
-    let isInfo = state.isInfo;
-    let pi = state.pi;
-    let ci = state.ci;
+  initState: data => (state) => {
+    const storage = store.get(STORAGE_KEY);
+    const { bundle } = data;
+    let {
+      isTree, isInfo, pi, ci,
+    } = state;
     let figuresOpen = [];
-    for (let i = 0; i < data.figures.length; i++) {
+    for (let i = 0; i < data.figures.length; i += 1) {
       figuresOpen[i] = true;
     }
-    let title = data.title || state.title;
+    const title = data.title || state.title;
 
     if (storage) {
-      isTree = storage.isTree;
-      isInfo = storage.isInfo;
-      if (figuresOpen.length == data.figures.length && storage.figuresOpen) {
-        figuresOpen = storage.figuresOpen;
+      ({ isTree, isInfo } = storage);
+      if (figuresOpen.length === data.figures.length && storage.figuresOpen) {
+        ({ figuresOpen } = storage);
       }
       if (data.figures[storage.pi] && data.figures[storage.pi].list[storage.ci]) {
-        pi = storage.pi;
-        ci = storage.ci;
+        ({ pi, ci } = storage);
       }
     }
 
-    // get params
-    let params = location.search.substring(1).split('&');
-    let paramsKv = {};
-    for (let i = 0; params[i]; i++) {
-      let kv = params[i].split('=');
-      paramsKv[kv[0]] = kv[1];
-    }
-    if (paramsKv['pi'] && paramsKv['ci']) {
-      if (data.figures[paramsKv['pi']] && data.figures[paramsKv['pi']].list[paramsKv['ci']]) {
-        pi = paramsKv['pi'];
-        ci = paramsKv['ci'];
-      }
-    }
+    // // get params
+    // const params = window.location.search.substring(1).split('&');
+    // const paramsKv = {};
+    // for (let i = 0; params[i]; i += 1) {
+    //   const kv = params[i].split('=');
+    //   paramsKv[kv[0]] = kv[1];
+    // }
+    // if (paramsKv.pi && paramsKv.ci) {
+    //   if (data.figures[paramsKv.pi] && data.figures[paramsKv.pi].list[paramsKv.ci]) {
+    //     ({ pi, ci } = paramsKv);
+    //   }
+    // }
 
     // Set Storage
-    let newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       bundle,
       headHtml: data.headHtml,
       isTree,
@@ -54,7 +50,7 @@ const actions = {
       ci,
       figures: data.figures,
       figuresOpen,
-      title
+      title,
     });
     store.set(STORAGE_KEY, newState);
     return newState;
@@ -63,25 +59,25 @@ const actions = {
   /**
    * Change Tree Active
    */
-  changeTree: (index) => (state) => {
+  changeTree: index => (state) => {
     // Set Storage
-    let newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       pi: index[0],
       ci: index[1],
     });
     store.set(STORAGE_KEY, newState);
 
     // set params
-    window.history.pushState({}, null, `?pi=${ index[0] }&ci=${ index[1] }`);
+    window.history.pushState({}, null, `?pi=${index[0]}&ci=${index[1]}`);
     return newState;
   },
 
   /**
    * Toggle Tree Display
    */
-  toggleTree: () => state => {
+  toggleTree: () => (state) => {
     // Set Storage
-    let newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       isTree: !state.isTree,
       isInfo: state.isInfo,
     });
@@ -92,12 +88,12 @@ const actions = {
   /**
    * Toggle Accordion
    */
-  toggleTreeAccordion: (pi) => state => {
-    let figuresOpen = state.figuresOpen;
+  toggleTreeAccordion: pi => (state) => {
+    const { figuresOpen } = state;
     figuresOpen[pi] = !figuresOpen[pi];
     // Set Storage
-    let newState = Object.assign({}, state, {
-      figuresOpen
+    const newState = Object.assign({}, state, {
+      figuresOpen,
     });
     store.set(STORAGE_KEY, newState);
     return newState;
@@ -106,9 +102,9 @@ const actions = {
   /**
    * Toggle Info Display
    */
-  toggleInfo: () => state => {
+  toggleInfo: () => (state) => {
     // Set Storage
-    let newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       isTree: state.isTree,
       isInfo: !state.isInfo,
     });
@@ -119,8 +115,7 @@ const actions = {
   /**
    * Move Foucused Components
    */
-  moveFocusedTag: (dir) => state => {
-
+  moveFocusedTag: dir => (state) => {
     let nextpi = state.pi;
     let nextci = dir === 'up' ? state.ci - 1 : state.ci + 1;
 
@@ -129,44 +124,44 @@ const actions = {
         nextpi = state.pi;
         nextci = state.ci;
       } else {
-        nextpi = nextpi - 1;
+        nextpi -= 1;
         nextci = state.figures[state.pi - 1].list.length - 1;
       }
     } else if (nextci > state.figures[state.pi].list.length - 1) {
       if (state.pi + 1 > state.figures.length - 1) {
         nextpi = state.pi;
-        nextci = state.ci
+        nextci = state.ci;
       } else {
-        nextpi = nextpi + 1;
+        nextpi += 1;
         nextci = 0;
       }
     }
 
     // Set Storage
-    let newState = Object.assign({}, state, {
+    const newState = Object.assign({}, state, {
       pi: nextpi,
       ci: nextci,
     });
     store.set(STORAGE_KEY, newState);
 
     // set params
-    window.history.pushState({}, null, `?pi=${ nextpi }&ci=${ nextci }`);
+    window.history.pushState({}, null, `?pi=${nextpi}&ci=${nextci}`);
     return newState;
   },
 
   /**
    * Open Accordion
    */
-  openTreeAccordion: (flag) => state => {
-    let figuresOpen = state.figuresOpen;
+  openTreeAccordion: flag => (state) => {
+    const { figuresOpen } = state;
     figuresOpen[state.pi] = flag;
     // Set Storage
-    let newState = Object.assign({}, state, {
-      figuresOpen
+    const newState = Object.assign({}, state, {
+      figuresOpen,
     });
     store.set(STORAGE_KEY, newState);
     return newState;
-  }
+  },
 };
 
 export default actions;

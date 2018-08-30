@@ -2475,6 +2475,8 @@ body {
   margin-bottom: 24px; }
   .fig-code .fig-precode {
     font-size: 16px; }
+  .fig-code .siimple-pre {
+    width: 100%; }
 
 .fig-opts {
   margin-bottom: 24px; }

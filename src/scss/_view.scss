@@ -2,4 +2,23 @@
   padding: 24px;
   margin-bottom: 24px;
   border: 1px solid #dde5ee;
+  position: relative;
+
+  .fig-view-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+    cursor: pointer;
+
+    i {
+      transition: transform .1s linear;
+    }
+
+    &:hover {
+      i {
+        transform: scale(1.2);
+      }
+    }
+  }
 }

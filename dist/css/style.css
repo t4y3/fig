@@ -2458,7 +2458,18 @@ body {
 .fig-view {
   padding: 24px;
   margin-bottom: 24px;
-  border: 1px solid #dde5ee; }
+  border: 1px solid #dde5ee;
+  position: relative; }
+  .fig-view .fig-view-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+    cursor: pointer; }
+    .fig-view .fig-view-icon i {
+      transition: transform .1s linear; }
+    .fig-view .fig-view-icon:hover i {
+      transform: scale(1.2); }
 
 .fig-code {
   margin-bottom: 24px; }
@@ -2481,7 +2492,7 @@ body {
   .fig-component .headSub {
     align-items: center;
     cursor: pointer; }
-  .fig-component .icon-link {
+  .fig-component .fig-component-icon {
     margin-left: 8px; }
 
 * {

@@ -1,4 +1,5 @@
 import { h } from 'hyperapp';
+import router from '../router';
 
 const loadedCallback = (e) => {
   const iframeDocument = e.target.contentDocument || e.target.contentWindow.document;
@@ -47,8 +48,37 @@ const getSrcTemplate = (state, data) => {
     </html>`;
 };
 
-const View = ({ state, data }) => (
-  <div className="fig-view">
+const clickHandlerFullScreen = (state, index, typeindex) => {
+  const figure = state.figures[index];
+  const data = figure.list[typeindex];
+  router.navigateTo(`/${figure.name}/${data.name}/full`);
+};
+
+const View = ({
+  state, data, index, typeindex,
+}) => {
+  if (state.page !== 'full') {
+    return (
+      <div className="fig-view">
+        <iframe
+          width="100%"
+          sandbox="allow-scripts allow-same-origin"
+          srcdoc={getSrcTemplate(state, data)}
+          onload={(e) => {
+            loadedCallback(e);
+          }}
+        />
+        <div
+          className="fig-view-icon bg-example siimple--bg-light"
+          onclick={clickHandlerFullScreen.bind(this, state, index, typeindex)}
+        >
+          <i className="material-icons icon-link">fullscreen</i>
+        </div>
+      </div>
+    );
+  }
+
+  return (
     <iframe
       width="100%"
       sandbox="allow-scripts allow-same-origin"
@@ -57,7 +87,7 @@ const View = ({ state, data }) => (
         loadedCallback(e);
       }}
     />
-  </div>
-);
+  );
+};
 
 export default View;

@@ -11,7 +11,7 @@ const Component = ({ state, figure, index }) => (
       onclick={() => router.navigateTo(`/${figure.name}`)}
     >
       {figure.name}
-      <i className="material-icons icon-link">link</i>
+      <i className="material-icons icon-link fig-component-icon">link</i>
     </p>
     {figure.list.map((data, j) => {
       if (state.indexOfType !== -1 && state.indexOfType !== j) {
@@ -25,9 +25,9 @@ const Component = ({ state, figure, index }) => (
             onclick={() => router.navigateTo(`/${figure.name}/${data.name}`)}
           >
             {data.name}
-            <i className="material-icons icon-link">link</i>
+            <i className="material-icons icon-link fig-component-icon">link</i>
           </p>
-          <View state={state} data={data} />
+          <View state={state} data={data} index={index} typeindex={j} />
           <Code template={data.template} />
           <Opts data={data} />
         </div>

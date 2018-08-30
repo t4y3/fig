@@ -2,7 +2,7 @@ import { h } from 'hyperapp';
 import Component from '../Component';
 import Breadcrumb from '../Breadcrumb';
 
-const FigDetail = ({ state }) => (
+const Detail = ({ state }) => (
   <div className="fig-detail">
     <Breadcrumb state={state} />
     {state.figures.map((figure, i) => {
@@ -12,4 +12,4 @@ const FigDetail = ({ state }) => (
   </div>
 );
 
-export default FigDetail;
+export default Detail;

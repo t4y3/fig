@@ -35,6 +35,14 @@ router.on('/:component/:type', (route) => {
   });
 });
 
+router.on('/:component/:type/full', (route) => {
+  routerAction.action.changePage({
+    page: 'full',
+    component: route.params.component,
+    componentType: route.params.type,
+  });
+});
+
 // start listening for the url to change.
 router.start();
 

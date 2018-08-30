@@ -10,6 +10,8 @@ const state = {
   page: 'index',
   component: '',
   componentType: '',
+  indexOfComponent: -1,
+  indexOfType: -1,
 };
 
 export default state;

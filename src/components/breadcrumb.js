@@ -13,7 +13,7 @@ const Breadcrumb = ({ state }) => (
     <div className="siimple-breadcrumb-item" onclick={navigateTo.bind(this, `/${state.component}`)}>
       {state.component}
     </div>
-    {state.componentType !== '' ? (
+    {state.indexOfType !== -1 ? (
       <div
         className="siimple-breadcrumb-item"
         onclick={navigateTo.bind(this, `/${state.component}/${state.componentType}`)}

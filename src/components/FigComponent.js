@@ -4,8 +4,8 @@ import FigCode from './FigCode';
 import FigView from './FigView';
 import FigOpts from './FigOpts';
 
-const FigComponent = ({ state, figure }) => (
-  <div id={`__anchor-${figure.name}`} className="fig-component">
+const FigComponent = ({ state, figure, index }) => (
+  <div id={`__anchor_${index}`} className="fig-component">
     <p
       className="head siimple-h1 siimple--display-flex"
       onclick={() => router.navigateTo(`/${figure.name}`)}
@@ -13,14 +13,14 @@ const FigComponent = ({ state, figure }) => (
       {figure.name}
       <i className="material-icons icon-link">link</i>
     </p>
-    {figure.list.map((data) => {
-      if (state.componentType !== '' && state.componentType !== data.name) {
+    {figure.list.map((data, j) => {
+      if (state.indexOfType !== -1 && state.indexOfType !== j) {
         return null;
       }
       return (
         <div className="type">
           <p
-            id={`__anchor-${figure.name}-${data.name}`}
+            id={`__anchor_${index}_${j}`}
             className="headSub siimple-h5 siimple--display-flex"
             onclick={() => router.navigateTo(`/${figure.name}/${data.name}`)}
           >

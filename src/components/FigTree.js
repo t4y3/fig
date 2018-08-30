@@ -16,20 +16,16 @@ const FigTree = ({ state }) => (
       <input type="text" className="siimple-input siimple-input--fluid" placeholder="Button" />
     </div>
     <div className="list">
-      {state.figures.map(figure => (
+      {state.figures.map((figure, i) => (
         <div>
-          <a
-            href={`#__anchor-${figure.name}`}
-            onclick={clickHandler}
-            className="siimple-menu-group"
-          >
+          <a href={`#__anchor_${i}`} onclick={clickHandler} className="siimple-menu-group">
             {figure.name}
           </a>
-          {figure.list.map((data) => {
-            const isSelected = figure.name === state.component && data.name === state.componentType;
+          {figure.list.map((data, j) => {
+            const isSelected = i === state.indexOfComponent && j === state.indexOfType;
             return (
               <a
-                href={`#__anchor-${figure.name}-${data.name}`}
+                href={`#__anchor_${i}_${j}`}
                 onclick={clickHandler}
                 className={`siimple-menu-item ${isSelected ? 'siimple-menu-item--selected' : ''}`}
               >

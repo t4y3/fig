@@ -47,7 +47,7 @@ const getSrcTemplate = (state, data) => {
     </html>`;
 };
 
-const FigView = ({ state, data }) => (
+const View = ({ state, data }) => (
   <div className="fig-view">
     <iframe
       width="100%"
@@ -60,4 +60,4 @@ const FigView = ({ state, data }) => (
   </div>
 );
 
-export default FigView;
+export default View;

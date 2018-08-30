@@ -9,7 +9,7 @@ const clickHandler = (e) => {
   wrapper.scrollTo(0, targetOffset);
 };
 
-const FigTree = ({ state }) => (
+const Tree = ({ state }) => (
   <div className="fig-tree">
     <div className="title siimple-h4">{state.title}</div>
     <div className="search siimple-form">
@@ -39,4 +39,4 @@ const FigTree = ({ state }) => (
   </div>
 );
 
-export default FigTree;
+export default Tree;

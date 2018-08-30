@@ -8,7 +8,7 @@ const format = (e, data) => {
   djt.render();
 };
 
-const FigOpts = ({ data }) => {
+const Opts = ({ data }) => {
   const isEmpty = !Object.keys(data._opts).length;
   if (isEmpty) {
     return null;
@@ -41,4 +41,4 @@ const FigOpts = ({ data }) => {
   );
 };
 
-export default FigOpts;
+export default Opts;

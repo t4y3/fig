@@ -1,10 +1,10 @@
 import { h } from 'hyperapp';
 import router from '../router';
-import FigCode from './FigCode';
-import FigView from './FigView';
-import FigOpts from './FigOpts';
+import Code from './Code';
+import View from './View';
+import Opts from './Opts';
 
-const FigComponent = ({ state, figure, index }) => (
+const Component = ({ state, figure, index }) => (
   <div id={`__anchor_${index}`} className="fig-component">
     <p
       className="head siimple-h1 siimple--display-flex"
@@ -27,13 +27,13 @@ const FigComponent = ({ state, figure, index }) => (
             {data.name}
             <i className="material-icons icon-link">link</i>
           </p>
-          <FigView state={state} data={data} />
-          <FigCode template={data.template} />
-          <FigOpts data={data} />
+          <View state={state} data={data} />
+          <Code template={data.template} />
+          <Opts data={data} />
         </div>
       );
     })}
   </div>
 );
 
-export default FigComponent;
+export default Component;

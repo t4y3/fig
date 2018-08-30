@@ -4,7 +4,7 @@ import 'whatwg-fetch';
 import { h, app } from 'hyperapp';
 import { routerAction } from './router';
 // import Mousetrap from 'mousetrap';
-import FigApp from './components/FigApp';
+import App from './components/App';
 
 // Init Store
 import state from './state';
@@ -15,7 +15,7 @@ import actions from './actions';
 let main;
 
 // Root view
-const view = (_state, _actions) => <FigApp state={_state} actions={_actions} />;
+const view = (_state, _actions) => <App state={_state} actions={_actions} />;
 
 // Entry(browser)
 window.addEventListener('DOMContentLoaded', () => {

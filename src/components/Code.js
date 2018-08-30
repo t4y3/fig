@@ -1,6 +1,6 @@
 import { h } from 'hyperapp';
 
-const FigCode = ({ template }) => (
+const Code = ({ template }) => (
   <div className="fig-code">
     <div className="siimple-h5">Source</div>
     <pre className="siimple-pre">
@@ -9,4 +9,4 @@ const FigCode = ({ template }) => (
   </div>
 );
 
-export default FigCode;
+export default Code;

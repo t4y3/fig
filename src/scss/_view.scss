@@ -1,16 +1,5 @@
 .fig-view {
-  display: block;
-  height: 100%;
-  flex: 1;
-
-  .view-inner {
-    height: 100%;
-    position: relative;
-  }
-
-  .view-frame {
-    display: block;
-    height: 100%;
-  }
-
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #dde5ee;
 }

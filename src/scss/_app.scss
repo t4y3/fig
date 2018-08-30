@@ -2,7 +2,6 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #f8f8f8;
 
   .app-inner {
     display: flex;
@@ -12,25 +11,14 @@
     .app-left {
       flex: 0 0 250px;
       min-width: 250px;
-      border-right: 1px solid #c1c1c1;
       position: relative;
     }
 
     .app-right {
+      padding: 16px;
       flex: 1;
-      display: flex;
-      flex-direction: column;
-
-      .app-right-top {
-        display: flex;
-        flex: 1;
-      }
-
-      .app-right-bottom {
-        flex: 0;
-        max-height: 50%;
-        padding: 0 16px 16px;
-      }
+      overflow: scroll;
+      scroll-behavior: smooth;
     }
   }
 }

@@ -1,8 +1,7 @@
 import { h } from 'hyperapp';
 import FigTree from './FigTree';
-import FigHeader from './FigHeader';
-import FigInfo from './FigInfo';
-import FigView from './FigView';
+import FigIndex from './pages/FigIndex';
+import FigDetail from './pages/FigDetail';
 
 const FigApp = ({ state, actions }) => (
   <div className="fig-app">
@@ -11,11 +10,8 @@ const FigApp = ({ state, actions }) => (
         <FigTree state={state} action={actions} />
       </div>
       <div className="app-right">
-        <FigHeader state={state} />
-        <div className="app-right-top">
-          <FigView state={state} />
-          <FigInfo state={state} action={actions} />
-        </div>
+        {state.page === 'index' ? <FigIndex state={state} action={actions} /> : null}
+        {state.page === 'detail' ? <FigDetail state={state} action={actions} /> : null}
       </div>
     </div>
   </div>

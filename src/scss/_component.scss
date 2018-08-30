@@ -1,0 +1,26 @@
+.fig-component {
+  margin-bottom: 72px;
+
+  .type {
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .head {
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      font-size: 40px;
+    }
+  }
+
+  .headSub {
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .icon-link {
+    margin-left: 8px;
+  }
+}

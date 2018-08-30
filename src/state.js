@@ -3,12 +3,13 @@ const state = {
   bundle: '',
   headHtml: '',
   isTree: true,
-  isInfo: true,
-  pi: 0, // parentIndex
-  ci: 0, // childrenIndex
   figures: [],
-  figuresOpen: [],
   title: 'Fig',
+
+  // TODO: stateの構成を検討
+  page: 'index',
+  component: '',
+  componentType: '',
 };
 
 export default state;

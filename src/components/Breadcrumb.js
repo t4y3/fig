@@ -5,20 +5,20 @@ const navigateTo = (path) => {
   router.navigateTo(path);
 };
 
-const Breadcrumb = ({ state }) => (
+const Breadcrumb = ({ component = '', componentType = '' }) => (
   <div className="siimple-breadcrumb">
     <div className="siimple-breadcrumb-item" onclick={navigateTo.bind(this, '/')}>
       Home
     </div>
-    <div className="siimple-breadcrumb-item" onclick={navigateTo.bind(this, `/${state.component}`)}>
-      {state.component}
+    <div className="siimple-breadcrumb-item" onclick={navigateTo.bind(this, `/${component}`)}>
+      {component}
     </div>
-    {state.indexOfType !== -1 ? (
+    {componentType ? (
       <div
         className="siimple-breadcrumb-item"
-        onclick={navigateTo.bind(this, `/${state.component}/${state.componentType}`)}
+        onclick={navigateTo.bind(this, `/${component}/${componentType}`)}
       >
-        {state.componentType}
+        {componentType}
       </div>
     ) : null}
   </div>

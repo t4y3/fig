@@ -1,9 +1,7 @@
 // fetch polyfill
 import 'whatwg-fetch';
-
 import { h, app } from 'hyperapp';
 import { routerAction } from './router';
-// import Mousetrap from 'mousetrap';
 import App from './components/App';
 
 // Init Store

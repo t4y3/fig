@@ -27,9 +27,15 @@ const Component = ({ state, figure, index }) => (
             {data.name}
             <i className="material-icons icon-link fig-component-icon">link</i>
           </p>
-          <View state={state} data={data} index={index} typeindex={j} />
+          <View
+            data={data}
+            bundle={state.bundle}
+            headHtml={state.headHtml}
+            component={figure.name}
+            componentType={data.name}
+          />
           <Code template={data.template} />
-          <Opts data={data} />
+          <Opts opts={data._opts} />
         </div>
       );
     })}

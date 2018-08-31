@@ -1,4 +1,5 @@
 import Esr from 'esr';
+import constant from './common/constant';
 
 // create an instance.
 const router = new Esr(Esr.HASH);
@@ -13,7 +14,7 @@ export const routerAction = new RouterAction();
 
 router.on('/', () => {
   routerAction.action.changePage({
-    page: 'index',
+    page: constant.page.index,
     component: '',
     componentType: '',
   });
@@ -21,7 +22,7 @@ router.on('/', () => {
 
 router.on('/:component', (route) => {
   routerAction.action.changePage({
-    page: 'detail',
+    page: constant.page.detail,
     component: route.params.component,
     componentType: '',
   });
@@ -29,7 +30,7 @@ router.on('/:component', (route) => {
 
 router.on('/:component/:type', (route) => {
   routerAction.action.changePage({
-    page: 'detail',
+    page: constant.page.detail,
     component: route.params.component,
     componentType: route.params.type,
   });
@@ -37,7 +38,7 @@ router.on('/:component/:type', (route) => {
 
 router.on('/:component/:type/full', (route) => {
   routerAction.action.changePage({
-    page: 'full',
+    page: constant.page.full,
     component: route.params.component,
     componentType: route.params.type,
   });

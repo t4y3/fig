@@ -2,7 +2,6 @@
 const state = {
   bundle: '',
   headHtml: '',
-  isTree: true,
   figures: [],
   title: 'Fig',
 

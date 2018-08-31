@@ -1,10 +1,10 @@
 class Figures extends Array {
-  add(key, fn, _opts={}) {
+  add(key, fn, _opts = {}) {
     this.push({
       name: key,
       template: fn(),
-      _opts: _opts
-    })
+      _opts,
+    });
     return this;
   }
 }
@@ -15,11 +15,11 @@ class InFig {
   }
 
   set(name) {
-    let list = new Figures();
+    const list = new Figures();
     this.figures.push({
-      name: name,
-      list: list
-    })
+      name,
+      list,
+    });
     return list;
   }
 

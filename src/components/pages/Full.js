@@ -1,9 +1,9 @@
 import { h } from 'hyperapp';
-import View from '../View';
+import Iframe from '../Iframe';
 
 const Full = ({ state }) => {
   const data = state.figures[state.indexOfComponent].list[state.indexOfType];
-  return <View state={state} data={data} />;
+  return <Iframe data={data} bundle={state.bundle} headHtml={state.headHtml} />;
 };
 
 export default Full;

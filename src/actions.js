@@ -39,11 +39,6 @@ const actions = {
     s.indexOfComponent = indexOfComponent;
     s.indexOfType = indexOfType;
 
-    if (data.page === 'index') {
-      s.isTree = true;
-    } else {
-      s.isTree = false;
-    }
     // Set Storage
     const newState = Object.assign({}, state, s);
     return newState;

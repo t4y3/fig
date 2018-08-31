@@ -8,8 +8,8 @@ const format = (e, data) => {
   djt.render();
 };
 
-const Opts = ({ data }) => {
-  const isEmpty = !Object.keys(data._opts).length;
+const Opts = ({ opts = {} }) => {
+  const isEmpty = !Object.keys(opts).length;
   if (isEmpty) {
     return null;
   }
@@ -24,13 +24,13 @@ const Opts = ({ data }) => {
           </div>
         </div>
         <div className="siimple-table-body">
-          {Object.keys(data._opts).map(key => (
+          {Object.keys(opts).map(key => (
             <div className="siimple-table-row">
               <div className="siimple-table-cell siimple--width-25">{key}</div>
               <div
                 className="siimple-table-cell siimple--width-75"
                 oncreate={(e) => {
-                  format(e, data._opts[key], key);
+                  format(e, opts[key], key);
                 }}
               />
             </div>

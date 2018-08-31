@@ -12,12 +12,14 @@ const clickHandler = (e) => {
 const Tree = ({ state }) => (
   <div className="fig-tree">
     <div className="title siimple-h4">{state.title}</div>
+    {/*
     <div className="search siimple-form">
-      <input type="text" className="siimple-input siimple-input--fluid" placeholder="Button" />
+      <input type="text" className="siimple-input siimple-input--fluid" placeholder="Filter" />
     </div>
+    */}
     <div className="list">
       {state.figures.map((figure, i) => (
-        <div>
+        <div key={i}>
           <a href={`#__anchor_${i}`} onclick={clickHandler} className="siimple-menu-group">
             {figure.name}
           </a>
@@ -25,6 +27,7 @@ const Tree = ({ state }) => (
             const isSelected = i === state.indexOfComponent && j === state.indexOfType;
             return (
               <a
+                key={`${i}_${j}`}
                 href={`#__anchor_${i}_${j}`}
                 onclick={clickHandler}
                 className={`siimple-menu-item ${isSelected ? 'siimple-menu-item--selected' : ''}`}

@@ -2454,6 +2454,9 @@ body {
     padding: 0 16px;
     flex: 1;
     overflow: scroll; }
+  .fig-tree .siimple-menu-item {
+    height: 30px;
+    line-height: 30px; }
 
 .fig-view {
   padding: 24px;

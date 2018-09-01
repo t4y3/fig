@@ -1,24 +1,28 @@
 import { h } from 'hyperapp';
+import constant from '../common/constant';
 
-const loadedCallback = (e) => {
+const loadedCallback = (e, state) => {
   const iframeDocument = e.target.contentDocument || e.target.contentWindow.document;
-  // const link = document.createElement('link');
-  // link.href = 'css/iframe.css';
-  // link.type = 'text/css';
-  // link.rel = 'stylesheet';
-  // iframeDocument.querySelector('head').appendChild(link);
   const windowHeith = iframeDocument.querySelector('body').clientHeight;
-  e.target.style.height = `${windowHeith}px`;
-  // iframeDocument.addEventListener('click', () => {
-  //   window.focus();
-  // });
+  if (state.page === constant.page.full) {
+    e.target.style.height = '100%';
+  } else {
+    // const link = document.createElement('link');
+    // link.href = 'css/iframe.css';
+    // link.type = 'text/css';
+    // link.rel = 'stylesheet';
+    // iframeDocument.querySelector('head').appendChild(link);
+    e.target.style.height = `${windowHeith}px`;
+    // iframeDocument.addEventListener('click', () => {
+    //   window.focus();
+    // });
+  }
 };
 
 const getSrcTemplate = (data, bundle, headHtml) => {
-  const item = data;
-  let tag = item.template;
+  let tag = data.template;
 
-  let optsNames = item.template.match(/{(.*?)}/g);
+  let optsNames = data.template.match(/{(.*?)}/g);
   if (optsNames) {
     optsNames = optsNames.map((str) => {
       const name = str.match(/{ (.*?) }/);
@@ -26,9 +30,9 @@ const getSrcTemplate = (data, bundle, headHtml) => {
     });
 
     for (let k = 0; k < optsNames.length; k += 1) {
-      if (item._opts[optsNames[k]]) {
+      if (data._opts[optsNames[k]]) {
         const regexp = new RegExp(`({ )${optsNames[k]}( })`);
-        const opts = JSON.stringify(item._opts[optsNames[k]]).replace(/"/g, "'");
+        const opts = JSON.stringify(data._opts[optsNames[k]]).replace(/"/g, "'");
         tag = tag.replace(regexp, `$1${opts}$2`);
       }
     }
@@ -47,13 +51,13 @@ const getSrcTemplate = (data, bundle, headHtml) => {
     </html>`;
 };
 
-const Iframe = ({ data, bundle, headHtml }) => (
+const Iframe = ({ data, bundle, headHtml }) => state => (
   <iframe
     width="100%"
     sandbox="allow-scripts allow-same-origin"
     srcdoc={getSrcTemplate(data, bundle, headHtml)}
     onload={(e) => {
-      loadedCallback(e);
+      loadedCallback(e, state);
     }}
   />
 );

@@ -31,7 +31,7 @@ InFig.set('Button')
   <ui-icon type="arrow-right"></ui-icon>
 </ui-button>`))
   .add('Loading', () => ('<ui-button primary loading="{ true }">Loading</ui-button>'))
-  .add('Disabled', () => ('<ui-button primary disabled="{ true }">Disabled</ui-button>'));
+  .add('Disabled', () => ('<ui-button primary __disabled="{ true }">Disabled</ui-button>'));
 
 // Input
 InFig.set('Input')
@@ -46,9 +46,7 @@ InFig.set('Badge')
 </ui-badge>
 <ui-badge count="1000" max="999">
   <div class="example-badge-block" style="width: 40px;height: 40px;background-color: #DDD;border-radius: 5px;"></div>
-</ui-badge>`), {
-    dot: true,
-  });
+</ui-badge>`));
 
 // ProgressBar
 InFig.set('ProgressBar')
@@ -76,18 +74,24 @@ InFig.set('Link')
 
 // Switch
 InFig.set('Switch')
-  .add('Basic', () => (`<ui-switch checked="true" sm></ui-switch>
-<ui-switch checked="true"></ui-switch>
-<ui-switch checked="true" lg></ui-switch>`))
-  .add('Disabled', () => ('<ui-switch checked="{ true }" disabled="{ true }" lg></ui-switch>'));
+  .add('Basic', () => (`<ui-switch __checked="true" sm></ui-switch>
+<ui-switch __checked="true"></ui-switch>
+<ui-switch __checked="true" lg></ui-switch>`))
+  .add('Disabled', () => ('<ui-switch __checked="{ checked }" __disabled="{ disabled }" lg></ui-switch>'),
+    {
+      checked: true,
+      disabled: true,
+    });
 
 // Checkbox
 InFig.set('Checkbox')
-  .add('Basic', () => (`<ui-checkbox-group value="{ ['option1', 'option2'] }">
+  .add('Basic', () => (`<ui-checkbox-group value="{ value }">
   <ui-checkbox value="option1">Option 1</ui-checkbox>
   <ui-checkbox value="option2">Option 2</ui-checkbox>
   <ui-checkbox value="option3">Option 3</ui-checkbox>
-</ui-checkbox-group>`));
+</ui-checkbox-group>`), {
+    value: ['option1', 'option2'],
+  });
 
 // Radio
 InFig.set('Radio')
@@ -185,13 +189,18 @@ InFig.set('Slider')
 // Pagination
 InFig.set('Pagination')
   .add('Basic', () => (`<ui-pagination
-  min="{ 50 }"
-  max="{ 100 }"
+  min="{ min }"
+  max="{ max }"
   current="{ current }"
   prev-text="<"
   next-text=">"
   on-change="{ onPaginationChange }"
-></ui-pagination>`));
+></ui-pagination>`),
+  {
+    min: 50,
+    max: 100,
+    current: 55,
+  });
 
 // Spinner
 InFig.set('Spinner')

@@ -20,4 +20,10 @@
     flex: 1;
     overflow: scroll;
   }
+
+  // HACK:
+  .siimple-menu-item  {
+    height: 30px;
+    line-height: 30px;
+  }
 }

@@ -1,104 +1,49 @@
 {
-  "title": "Fig Sample",
+  "title": "Your project name",
   "bundle": "",
   "figures": [
     {
       "name": "Button",
       "list": [
         {
-          "name": "Default",
-          "template": "<material-button class=\"ui\"><div class=\"text\">BUTTON</div></material-button>",
+          "name": "Basic",
+          "template": "<ui-button primary>Primary</ui-button>\n<ui-button success>Success</ui-button>\n<ui-button warning>Warning</ui-button>\n<ui-button danger>Danger</ui-button>\n<ui-button>Normal</ui-button>",
           "_opts": {}
         },
         {
-          "name": "Custom",
-          "template": "\n<material-button class=\"ui\" waves-color=\"#000\" shady=\"true\" style=\"background:#ed7ff4; height: 50px; line-height: 46px\">\n    <div class=\"text\">ICON</div>\n    <i class=\"material-icons\">create</i>\n</material-button>",
+          "name": "Outline",
+          "template": "<ui-button primary outline>Primary</ui-button>\n<ui-button success outline>Success</ui-button>\n<ui-button warning outline>Warning</ui-button>\n<ui-button danger outline>Danger</ui-button>",
           "_opts": {}
         },
         {
-          "name": "Rounded",
-          "template": "\n<material-button class=\"ui\" waves-center=\"true\" rounded=\"true\" waves-opacity=\"0.6\" waves-duration=\"600\" style=\"background:#f43137\">\n    <i class=\"material-icons\">add</i>\n</material-button>\n      ",
+          "name": "Link",
+          "template": "<ui-button primary link>Primary</ui-button>\n<ui-button success link>Success</ui-button>\n<ui-button warning link>Warning</ui-button>\n<ui-button danger link>Danger</ui-button>",
+          "_opts": {}
+        },
+        {
+          "name": "Size",
+          "template": "<ui-button primary sm>Small</ui-button>\n<ui-button primary>Medium</ui-button>\n<ui-button primary lg>Large</ui-button>",
+          "_opts": {}
+        },
+        {
+          "name": "Block",
+          "template": "<ui-button primary lg block>Block Button</ui-button>",
+          "_opts": {}
+        },
+        {
+          "name": "With Icon",
+          "template": "<ui-button primary>\n  <ui-icon type=\"arrow-left\"></ui-icon>\n  Prev\n</ui-button>\n\n<ui-button primary>\n  Next\n  <ui-icon type=\"arrow-right\"></ui-icon>\n</ui-button>",
+          "_opts": {}
+        },
+        {
+          "name": "Loading",
+          "template": "<ui-button primary loading=\"{ true }\">Loading</ui-button>",
           "_opts": {}
         },
         {
           "name": "Disabled",
-          "template": "\n<material-button class=\"ui\" disabled=\"true\">\n    <div class=\"text\">Disabled</div>\n</material-button>\n      ",
+          "template": "<ui-button primary __disabled=\"{ true }\">Disabled</ui-button>",
           "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "Checkbox",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-checkbox name=\"checker\">\n    Label\n</material-checkbox>\n      ",
-          "_opts": {}
-        },
-        {
-          "name": "Disabled",
-          "template": "\n<material-checkbox disabled=\"true\">\n    Disabled\n</material-checkbox>",
-          "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "ComboBox",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-combo  defaultText=\"Select one\">\n    <option value=\"1\">One</option>\n    <option value=\"2\">Two</option>\n</material-combo>\n      ",
-          "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "Dropdown",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-dropdown>\n    <p>DropDown content</p>\n</material-dropdown>\n      ",
-          "_opts": {}
-        },
-        {
-          "name": "Changed animation",
-          "template": "\n<material-dropdown animation=\"bottom\">\n    <p>DropDown content</p>\n</material-dropdown>\n  ",
-          "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "Dropdown List",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-dropdown-list items=\"{ items }\"></material-dropdown-list>\n      ",
-          "_opts": {
-            "items": [
-              {
-                "title": "One"
-              },
-              {
-                "title": "Two"
-              }
-            ]
-          }
-        },
-        {
-          "name": "Changed animation",
-          "template": "\n<material-dropdown-list items=\"{ items }\"></material-dropdown-list>\n  ",
-          "_opts": {
-            "items": [
-              {
-                "title": "One",
-                "link": "#one"
-              },
-              {
-                "title": "Two",
-                "link": "#two"
-              }
-            ]
-          }
         }
       ]
     },
@@ -106,127 +51,166 @@
       "name": "Input",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-input placeholder=\"Just input\"></material-input>\n      ",
-          "_opts": {}
-        },
-        {
-          "name": "Icon",
-          "template": "\n<material-input icon=\"true\" waves-color=\"#2f6975\" label=\"Icon input\">\n    <i class=\"material-icons\">search</i>\n</material-input>\n  ",
-          "_opts": {}
-        },
-        {
-          "name": "Validation by type",
-          "template": "\n<material-input type=\"email\" label=\"Email\"></material-input>\n  ",
-          "_opts": {}
-        },
-        {
-          "name": "Custom validation",
-          "template": "\n<material-input valid=\"/^d+$/\" label=\"Numbers only\"></material-input>\n  ",
+          "name": "Basic",
+          "template": "<ui-input placeholder=\"placeholder\" value=\"content\" sm></ui-input>\n<ui-input placeholder=\"placeholder\" value=\"content\"></ui-input>\n<ui-input placeholder=\"placeholder\" value=\"content\" lg></ui-input>",
           "_opts": {}
         }
       ]
     },
     {
-      "name": "Navbar",
+      "name": "Badge",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-navbar>\n    <div class=\"logo\"><a href=\"#\">Logo</a></div>\n</material-navbar>\n      ",
+          "name": "Basic",
+          "template": "<ui-badge count=\"50\" dot=\"{ true }\">\n  <div class=\"example-badge-block\" style=\"width: 40px;height: 40px;background-color: #DDD;border-radius: 5px;\"></div>\n</ui-badge>\n<ui-badge count=\"1000\" max=\"999\">\n  <div class=\"example-badge-block\" style=\"width: 40px;height: 40px;background-color: #DDD;border-radius: 5px;\"></div>\n</ui-badge>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "ProgressBar",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-progress-bar value=\"50\"></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"60\" success></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"70\" warning></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"80\" danger></ui-progress-bar>",
           "_opts": {}
         },
         {
-          "name": "Custom styling",
-          "template": "\n<material-navbar style=\"background: #ccc;\" >\n    <div class=\"logo\"><a href=\"#\">Logo</a></div>\n</material-navbar>\n  ",
+          "name": "With Label",
+          "template": "<ui-progress-bar value=\"50\" label></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"60\" label success></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"70\" label warning></ui-progress-bar>\n<br />\n<ui-progress-bar value=\"80\" label danger></ui-progress-bar>",
           "_opts": {}
         }
       ]
     },
     {
-      "name": "Pane",
+      "name": "Link",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-pane>\n    <div class=\"material-pane-left-bar\">\n        <material-button rounded=\"true\">\n            <i class=\"material-icons\">arrow_back</i>\n        </material-button>\n    </div>\n    <div class=\"material-pane-title\">TITLE</div>\n    <div class=\"material-pane-right-bar\">\n        <material-button rounded=\"true\">\n            <i class=\"material-icons\">more_vert</i>\n        </material-button>\n    </div>\n    <div class=\"material-pane-content\">\n        CONTENT\n    </div>\n</material-pane>\n      ",
+          "name": "Basic",
+          "template": "<ui-link href=\"javascript:;\">normal</ui-link>\n<ui-link success href=\"javascript:;\">success</ui-link>\n<ui-link warning href=\"javascript:;\">warning</ui-link>\n<ui-link danger href=\"javascript:;\">danger</ui-link>",
           "_opts": {}
         }
       ]
     },
     {
-      "name": "Popup",
+      "name": "Switch",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-popup>\n    <p>Content</p>\n</material-popup>\n      ",
+          "name": "Basic",
+          "template": "<ui-switch __checked=\"true\" sm></ui-switch>\n<ui-switch __checked=\"true\"></ui-switch>\n<ui-switch __checked=\"true\" lg></ui-switch>",
           "_opts": {}
         },
         {
-          "name": "Popup With Title",
-          "template": "\n<material-popup>\n    <div class=\"material-popup-title\">Title</div>\n    <p>Content</p>\n</material-popup>\n      ",
-          "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "Toast",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-snackbar></material-snackbar>\n      ",
-          "_opts": {}
-        },
-        {
-          "name": "Error Toast",
-          "template": "\n<material-snackbar></material-snackbar>\n      ",
-          "_opts": {}
-        }
-      ]
-    },
-    {
-      "name": "Tabs",
-      "list": [
-        {
-          "name": "Default",
-          "template": "\n<material-tabs tabs=\"{ tabs }\"></material-tabs>\n      ",
+          "name": "Disabled",
+          "template": "<ui-switch __checked=\"{ checked }\" __disabled=\"{ disabled }\" lg></ui-switch>",
           "_opts": {
-            "tabs": [
-              {
-                "title": "ONE"
-              },
-              {
-                "title": "TWO"
-              }
-            ]
+            "checked": true,
+            "disabled": true
           }
-        },
+        }
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "list": [
         {
-          "name": "Error Toast",
-          "template": "\n<material-tabs useLine=\"true\" tabs=\"{ tabs }\"></material-tabs>\n      ",
+          "name": "Basic",
+          "template": "<ui-checkbox-group value=\"{ value }\">\n  <ui-checkbox value=\"option1\">Option 1</ui-checkbox>\n  <ui-checkbox value=\"option2\">Option 2</ui-checkbox>\n  <ui-checkbox value=\"option3\">Option 3</ui-checkbox>\n</ui-checkbox-group>",
           "_opts": {
-            "tabs": [
-              {
-                "title": "ONE"
-              },
-              {
-                "title": "TWO"
-              }
+            "value": [
+              "option1",
+              "option2"
             ]
           }
         }
       ]
     },
     {
-      "name": "Textarea",
+      "name": "Radio",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-textarea label=\"Textarea\" ></material-textarea>\n      ",
+          "name": "Basic",
+          "template": "<ui-radio-group value=\"option1\">\n  <ui-radio value=\"option1\">Option 1</ui-radio>\n  <ui-radio value=\"option2\">Option 2</ui-radio>\n</ui-radio-group>",
           "_opts": {}
         },
         {
-          "name": "Max rows count is 2",
-          "template": "\n<material-textarea max-rows=\"2\" label=\"Max rows count is 2\"></material-textarea>\n      ",
+          "name": "Button",
+          "template": "<ui-radio-group value=\"option2\">\n  <ui-radio-button value=\"option1\">Option 1</ui-radio-button>\n  <ui-radio-button value=\"option2\">Option 2</ui-radio-button>\n  <ui-radio-button value=\"option3\">Option 3</ui-radio-button>\n  <ui-radio-button value=\"option4\">Option 4</ui-radio-button>\n</ui-radio-group>",
           "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Breadcrumb",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-breadcrumb>\n  <ui-breadcrumb-item>\n    <ui-icon icon=\"&#xe60a;\"></ui-icon>\n    Home\n  </ui-breadcrumb-item>\n\n  <ui-breadcrumb-item>\n    <ui-icon icon=\"&#xe60b;\"></ui-icon>\n    <a href=\"javascript:;\">First</a>\n  </ui-breadcrumb-item>\n\n  <ui-breadcrumb-item>\n    <ui-icon icon=\"&#xe609;\"></ui-icon>\n    <a href=\"javascript:;\">Second</a>\n  </ui-breadcrumb-item>\n\n  <ui-breadcrumb-item>\n    <a href=\"javascript:;\">Current</a>\n  </ui-breadcrumb-item>\n</ui-breadcrumb>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-tooltip title=\"Tooltip on left\" placement=\"left\">\n  <ui-button>Tooltip on left</ui-button>\n</ui-tooltip>\n\n<ui-tooltip title=\"Tooltip on top\" placement=\"top\">\n  <ui-button>Tooltip on top</ui-button>\n</ui-tooltip>\n\n<ui-tooltip title=\"Tooltip on bottom\" placement=\"bottom\">\n  <ui-button>Tooltip on bottom</ui-button>\n</ui-tooltip>\n\n<ui-tooltip title=\"Tooltip on right\" placement=\"right\">\n  <ui-button>Tooltip on right</ui-button>\n</ui-tooltip>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Rate",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-rate total=\"10\" value=\"5\"></ui-rate>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Tag",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-tag>normal</ui-tag>\n<ui-tag primary>primary</ui-tag>\n<ui-tag success>success</ui-tag>\n<ui-tag warning>warning</ui-tag>\n<ui-tag danger>danger</ui-tag>",
+          "_opts": {}
+        },
+        {
+          "name": "Round",
+          "template": "<ui-tag round>normal</ui-tag>\n<ui-tag primary round>primary</ui-tag>\n<ui-tag success round>success</ui-tag>\n<ui-tag warning round>warning</ui-tag>\n<ui-tag danger round>danger</ui-tag>",
+          "_opts": {}
+        },
+        {
+          "name": "Invert",
+          "template": "<ui-tag invert>normal</ui-tag>\n<ui-tag primary invert>primary</ui-tag>\n<ui-tag success invert>success</ui-tag>\n<ui-tag warning invert>warning</ui-tag>\n<ui-tag danger invert>danger</ui-tag>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Slider",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-slider\n  value=\"{ 50 }\"\n  min=\"{ 0 }\"\n  max=\"{ 100 }\"\n  step=\"{ 5 }\"\n></ui-slider>\n\n<ui-slider\n  value=\"{ 50 }\"\n  min=\"{ 0 }\"\n  max=\"{ 100 }\"\n  step=\"{ 5 }\"\n  tip-placement=\"bottom\"\n></ui-slider>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Pagination",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-pagination\n  min=\"{ min }\"\n  max=\"{ max }\"\n  current=\"{ current }\"\n  prev-text=\"<\"\n  next-text=\">\"\n  on-change=\"{ onPaginationChange }\"\n></ui-pagination>",
+          "_opts": {
+            "min": 50,
+            "max": 100,
+            "current": 55
+          }
         }
       ]
     },
@@ -234,17 +218,27 @@
       "name": "Spinner",
       "list": [
         {
-          "name": "Default",
-          "template": "\n<material-spinner></material-spinner>\n      ",
+          "name": "Basic",
+          "template": "<ui-spinner sm></ui-spinner>\n<ui-spinner></ui-spinner>\n<ui-spinner lg></ui-spinner>",
           "_opts": {}
         },
         {
-          "name": "Spinner with changed stroke width",
-          "template": "\n<material-spinner strokewidth=\"7\"></material-spinner>\n      ",
+          "name": "Block",
+          "template": "<ui-spinner block></ui-spinner>",
+          "_opts": {}
+        }
+      ]
+    },
+    {
+      "name": "Tree",
+      "list": [
+        {
+          "name": "Basic",
+          "template": "<ui-tree on-change=\"{ onTreeChange }\">\n  <ui-tree-node title=\"root\" key=\"0\">\n    <ui-tree-node title=\"first0\" key=\"1\">\n      <ui-tree-node title=\"second0\" key=\"3\">\n        <ui-tree-node title=\"third0\" key=\"6\"></ui-tree-node>\n        <ui-tree-node title=\"third1\" key=\"7\"></ui-tree-node>\n      </ui-tree-node>\n      <ui-tree-node title=\"second1\" key=\"4\"></ui-tree-node>\n      <ui-tree-node title=\"second2\" key=\"5\"></ui-tree-node>\n    </ui-tree-node>\n    <ui-tree-node title=\"first1\" key=\"2\"></ui-tree-node>\n  </ui-tree-node>\n</ui-tree>",
           "_opts": {}
         }
       ]
     }
   ],
-  "headHtml": "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>\n<link href=\"https://cdn.jsdelivr.net/npm/riot-mui@0.1.1/build/styles/riot-mui.min.css\" rel=\"stylesheet\">\n<script src=\"https://cdn.jsdelivr.net/riot/3.3.2/riot+compiler.min.js\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/riot-mui@0.1.1/build/js/riot-mui-min.min.js\"></script>\n<script>\n  window.addEventListener('DOMContentLoaded',function() {\n    riot.mount('*');\n  });\n</script>\n"
+  "headHtml": "<link rel=\"stylesheet\" href=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.css\">\n<!-- <script src=\"https://unpkg.com/riot@3.11.2/riot.min.js\"></script> -->\n<script src=\"https://unpkg.com/riot@2.4.1/riot.min.js\"></script>\n<script src=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.js\"></script>\n<script>\n  window.addEventListener('DOMContentLoaded',function() {\n    riot.mount('*');\n  });\n</script>\n"
 }

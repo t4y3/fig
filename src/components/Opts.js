@@ -3,8 +3,13 @@ import { h } from 'hyperapp';
 /**
  * format opts value
  */
-const format = (e, data) => {
-  const djt = new DomJsonTree(data, e);
+const format = (e, data, key) => {
+  const djt = new DomJsonTree(
+    {
+      [key]: data,
+    },
+    e,
+  );
   djt.render();
 };
 

@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "no-unused-vars": [2, { "varsIgnorePattern": "h" }],
+    "no-underscore-dangle": ["error", { "allow": ["_opts"] }],
+    "react/jsx-uses-vars": 1,
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
+  },
+  "globals": {
+    "DomJsonTree": true,
+    "hljs": true
+  }
+}

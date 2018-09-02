@@ -1,5 +1,5 @@
 module.exports = {
-  'title': 'Fig Sample',
+  'title': 'Your project name',
   'bundle': '',
   'figures': [
     'src/fig'

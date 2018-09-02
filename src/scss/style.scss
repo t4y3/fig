@@ -1,13 +1,19 @@
 // @see https://github.com/webpack-contrib/sass-loader#imports
 @import "node_modules/reset-css/sass/reset";
+@import "node_modules/siimple/scss/siimple";
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import "app";
-@import "header";
-@import "info";
+// page
+@import "index";
+@import "detail";
+// component
 @import "tree";
 @import "view";
+@import "code";
+@import "opts";
+@import "component";
 
 * { box-sizing: border-box; }
 

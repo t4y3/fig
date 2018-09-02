@@ -4,8 +4,6 @@ const state = {
   headHtml: '',
   figures: [],
   title: 'Fig',
-
-  // TODO: stateの構成を検討
   page: 'index',
   component: '',
   componentType: '',

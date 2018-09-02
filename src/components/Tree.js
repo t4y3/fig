@@ -18,26 +18,35 @@ const Tree = ({ state }) => (
     </div>
     */}
     <div className="list">
-      {state.figures.map((figure, i) => (
-        <div key={i}>
-          <a href={`#__anchor_${i}`} onclick={clickHandler} className="siimple-menu-group">
-            {figure.name}
-          </a>
-          {figure.list.map((data, j) => {
-            const isSelected = i === state.indexOfComponent && j === state.indexOfType;
-            return (
-              <a
-                key={`${i}_${j}`}
-                href={`#__anchor_${i}_${j}`}
-                onclick={clickHandler}
-                className={`siimple-menu-item ${isSelected ? 'siimple-menu-item--selected' : ''}`}
-              >
-                {data.name}
-              </a>
-            );
-          })}
-        </div>
-      ))}
+      {state.figures.map((figure, i) => {
+        if (state.indexOfComponent !== -1 && state.indexOfComponent !== i) {
+          return null;
+        }
+
+        return (
+          <div key={i}>
+            <a href={`#__anchor_${i}`} onclick={clickHandler} className="siimple-menu-group">
+              {figure.name}
+            </a>
+            {figure.list.map((data, j) => {
+              if (state.indexOfType !== -1 && state.indexOfType !== j) {
+                return null;
+              }
+              // const isSelected = i === state.indexOfComponent && j === state.indexOfType;
+              return (
+                <a
+                  key={`${i}_${j}`}
+                  href={`#__anchor_${i}_${j}`}
+                  onclick={clickHandler}
+                  className="siimple-menu-item"
+                >
+                  {data.name}
+                </a>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   </div>
 );

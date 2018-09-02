@@ -13,11 +13,9 @@ const App = ({ state, actions }) => {
   return (
     <div className="fig-app">
       <div className="app-inner">
-        {state.page === constant.page.index ? (
-          <div className="app-left">
-            <Tree state={state} action={actions} />
-          </div>
-        ) : null}
+        <div className="app-left">
+          <Tree state={state} action={actions} />
+        </div>
         <div className="app-right">
           {state.page === constant.page.index ? <Index state={state} /> : null}
           {state.page === constant.page.detail ? <Detail state={state} /> : null}

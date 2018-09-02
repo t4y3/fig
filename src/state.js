@@ -1,17 +1,14 @@
-import store from 'store';
-import { STORAGE_KEY } from './common/constant';
-
 // Init Store
-let state = {
+const state = {
   bundle: '',
   headHtml: '',
-  isTree: true,
-  isInfo: true,
-  pi: 0,  // parentIndex
-  ci: 0,  // childrenIndex
   figures: [],
-  figuresOpen: [],
-  title: 'Fig'
+  title: 'Fig',
+  page: 'index',
+  component: '',
+  componentType: '',
+  indexOfComponent: -1,
+  indexOfType: -1,
 };
 
 export default state;

@@ -1,11 +1,8 @@
 // fetch polyfill
 import 'whatwg-fetch';
-
-import { h, app } from "hyperapp"
-import FigApp from './FigApp'
-
-import { KEY_EVENTS } from './common/constant';
-import Mousetrap from 'mousetrap';
+import { h, app } from 'hyperapp';
+import { routerAction } from './router';
+import App from './components/App';
 
 // Init Store
 import state from './state';
@@ -13,45 +10,18 @@ import state from './state';
 // Setting Actions
 import actions from './actions';
 
-Mousetrap.bind(KEY_EVENTS.TOGGLE_INFO, () => {
-  main.toggleInfo();
-});
-
-Mousetrap.bind(KEY_EVENTS.TOGGLE_TREE, () => {
-  main.toggleTree();
-});
-
-// move focused tag
-Mousetrap.bind(KEY_EVENTS.MOVE_DOWN, (e) => {
-  e.preventDefault();
-  main.moveFocusedTag('down');
-});
-Mousetrap.bind(KEY_EVENTS.MOVE_UP, (e) => {
-  e.preventDefault();
-  main.moveFocusedTag('up');
-});
-Mousetrap.bind(KEY_EVENTS.MOVE_LEFT, (e) => {
-  e.preventDefault();
-  main.openTreeAccordion(false);
-});
-Mousetrap.bind(KEY_EVENTS.MOVE_RIGHT, (e) => {
-  e.preventDefault();
-  main.openTreeAccordion(true);
-});
+let main;
 
 // Root view
-const view = (state, actions) => (
-  <FigApp state={ state } actions={ actions } />
-)
+const view = (_state, _actions) => <App state={_state} actions={_actions} />;
 
 // Entry(browser)
-let main;
 window.addEventListener('DOMContentLoaded', () => {
   main = app(state, actions, view, document.body);
-  fetch(`fig.config.json`)
-  .then((response) => {
-    return response.json();
-  }).then((data) => {
-    main.initState(data);
-  });
+  fetch('fig.config.json')
+    .then(response => response.json())
+    .then((data) => {
+      main.initState(data);
+      routerAction.setAction(main);
+    });
 });

@@ -8,63 +8,22 @@
   .title {
     padding: 0 16px;
     margin-bottom: 16px;
-    color: #10263d;
-    font-size: 2.4rem;
-    font-weight: bold;
     line-height: 4rem;
-    border-bottom: 1px solid #c1c1c1;
+  }
+
+  .search {
+    padding: 0 16px;
   }
 
   .list {
+    padding: 0 16px;
     flex: 1;
     overflow: scroll;
   }
 
-  .list__item {
-    cursor: pointer;
-    position: relative;
-    color: #10263d;
-
-    .tag-title {
-      display: flex;
-      align-items: center;
-      padding: 8px 8px;
-      position: relative;
-      font-size: 1.6rem;
-      font-weight: bold;
-      border-bottom: 1px solid #eee;
-
-      i {
-        margin-left: auto;
-        font-size: 18px;
-      }
-    }
-
-    .tag-list {
-      .tag-list__item {
-        padding: 8px 8px;
-        margin-left: 8px;
-        position: relative;
-        font-size: 1.4rem;
-        color: #677a96;
-
-        &:hover {
-           background-color: #10263d;
-           color: #fff;
-        }
-
-        &--active:after {
-          content: "";
-          display: block;
-          width: 4px;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: -8px;
-          background-color: #10263d;
-        }
-      }
-    }
+  // HACK:
+  .siimple-menu-item  {
+    height: 30px;
+    line-height: 30px;
   }
-
 }

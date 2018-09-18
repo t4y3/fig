@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code.js to match snapshot 1`] = `"<div className=\\"fig-code\\"><div className=\\"siimple-h5\\">Source</div><pre className=\\"siimple-pre\\"><code className=\\"html\\"><span class=\\"hljs-tag\\">&lt;<span class=\\"hljs-name\\">p</span>&gt;</span>test<span class=\\"hljs-tag\\">&lt;/<span class=\\"hljs-name\\">p</span>&gt;</span></code></pre></div>"`;

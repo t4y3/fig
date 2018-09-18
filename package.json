@@ -20,7 +20,8 @@
     "lint:js": "eslint src",
     "format": "run-s format:*",
     "format:js": "prettier-eslint --write 'src/**/*.js'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "jest"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "dom-json-tree": "^1.0.3",
@@ -57,8 +59,11 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.11.1",
     "esr": "^0.10.0",
+    "highlight.js": "^9.12.0",
     "husky": "^0.14.3",
     "hyperapp": "^1.2.6",
+    "hyperapp-render": "^2.1.0",
+    "jest": "^23.5.0",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.3",
     "npm-check-updates": "^2.14.2",

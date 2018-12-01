@@ -29,12 +29,25 @@ npm i @t4y3/fig
 ```
 
 ## Usage
+### In local environment
 ```bash
 # Server start
 fig-start
 ```
 
 Access `localhost: 8080`
+
+### Hosting a style guide
+- Please build and generate a static file
+
+```bash
+# Generate static file
+fig-build
+# or Specify the dist directory(default: dist)
+fig-build docs
+```
+
+
 
 ## Configuration
 ```sh
@@ -88,4 +101,23 @@ InFig.set('Button')
       type: 'blue'
     });
 
+```
+
+## Develop
+### In development
+```sh
+# build & watch
+npm run watch
+```
+
+```sh
+# example start
+npm start
+```
+
+## Before commitment
+
+```sh
+# bundle
+npm run build
 ```

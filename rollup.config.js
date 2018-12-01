@@ -12,8 +12,8 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: ['es2015-rollup'],
-      plugins: [['transform-react-jsx', { pragma: 'h' }]],
+      presets: ['@babel/preset-env'],
+      plugins: [['@babel/plugin-transform-react-jsx', { pragma: 'h' }]],
     }),
     resolve({
       jsnext: true,

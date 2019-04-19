@@ -2,7 +2,7 @@
 
 // require the module as normal
 let fs = require('fs-extra');
-let InFig = require('./infig/main');
+let InFig = require('../infig/main');
 
 // Constant
 const PROCESS_CWD = process.cwd();
@@ -37,7 +37,7 @@ const loadConfigFile = () => {
     fs.copyFileSync(config.bundle, `${ DIST_DIR }/bundle.js`);
     c.bundle = 'bundle.js';
   }
-  fs.copySync(`${ __dirname }/dist`, DIST_DIR);
+  fs.copySync(`${ __dirname }/../dist`, DIST_DIR);
   fs.writeFile(`${ DIST_DIR }/fig.config.json`, JSON.stringify(c, null, '  '));
 };
 

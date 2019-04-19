@@ -4,7 +4,7 @@
 let fs = require('fs-extra');
 let http = require('http');
 let browserSync = require("browser-sync");
-let InFig = require('./infig/main');
+let InFig = require('../infig/main');
 
 // Constant
 const PROCESS_CWD = process.cwd();
@@ -44,7 +44,7 @@ const loadConfigFile = () => {
   config.headHtml = headHtml;
   let c = Object.assign({}, config);
   c.figures = InFig.getFigures();
-  fs.writeFile(`${ __dirname }/dist/fig.config.json`, JSON.stringify(c, null, '  '));
+  fs.writeFile(`${ __dirname }/../dist/fig.config.json`, JSON.stringify(c, null, '  '));
 };
 
 
@@ -76,7 +76,7 @@ browserSync({
     }
   ],
   server: [
-    __dirname + "/dist",
+    __dirname + "/../dist",
     process.cwd()
   ]
 });

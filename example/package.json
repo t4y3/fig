@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ../index.js",
-    "build": "node ../build.js dist"
+    "start": "node ../bin/index.js",
+    "build": "node ../bin/build.js dist"
   },
   "keywords": [],
   "author": "",

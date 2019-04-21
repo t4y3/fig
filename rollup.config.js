@@ -15,9 +15,7 @@ export default {
       presets: ['@babel/preset-env'],
       plugins: [['@babel/plugin-transform-react-jsx', { pragma: 'h' }]],
     }),
-    resolve({
-      jsnext: true,
-    }),
+    resolve(),
     commonjs(),
     uglify(),
   ],

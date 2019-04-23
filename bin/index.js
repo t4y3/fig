@@ -2,7 +2,6 @@
 
 // require the module as normal
 const fs = require('fs-extra');
-const http = require('http');
 const browserSync = require('browser-sync');
 const InFig = require('../infig/main');
 

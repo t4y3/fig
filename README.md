@@ -1,4 +1,8 @@
 # Fig
+
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/t4y3/fig/blob/master/LICENSE)
+[![Version](https://img.shields.io/badge/dynamic/json.svg?label=version&colorB=5f9ea0&query=$.version&uri=https:%2F%2Fraw.githubusercontent.com%2Ft4y3%2Ffig%2Fmaster%2Fpackage.json&prefix=v)](https://www.npmjs.com/package/@t4y3/fig)
+
 Fig - library for gallery of Riot tag  
 You can check each component like a React Styleguidist by list.  
 It is also possible to check only specific component information.  
@@ -103,21 +107,48 @@ InFig.set('Button')
 
 ```
 
-## Develop
-### In development
+## Development
+
+#### Installing
+```sh
+# Install npm packages
+npm i
+```
+
+### Running
 ```sh
 # build & watch
 npm run watch
-```
 
-```sh
 # example start
 npm start
 ```
 
-## Before commitment
+### Before commitment
 
 ```sh
 # bundle
 npm run build
 ```
+
+#### Library
+- [Hyperapp](https://github.com/jorgebucaran/hyperapp) - View
+
+## Deployment
+```sh
+# Build
+npm build
+
+# Version Up
+npm version major|minor|patch
+
+# Publishes a package to the registry
+npm publish
+
+# Update master branch
+git push origin master
+
+# Push git tags
+git push origin --tags
+```
+

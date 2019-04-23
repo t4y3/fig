@@ -9,6 +9,15 @@ const format = (e, data, key) => {
       [key]: data,
     },
     e,
+    {
+      colors: {
+        key: '#008080',
+        type: '#546778',
+        typeNumber: '#000080',
+        typeString: '#dd1144',
+        typeBoolean: '#000080',
+      },
+    },
   );
   djt.render();
 };

@@ -6,6 +6,7 @@
     "import",
     "react"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -13,7 +14,8 @@
   },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "rules": {
     "no-unused-vars": [2, { "varsIgnorePattern": "h" }],

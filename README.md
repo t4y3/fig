@@ -134,7 +134,7 @@ npm run build
 #### Library
 - [Hyperapp](https://github.com/jorgebucaran/hyperapp) - View
 
-## Deployment
+## Deployment(git-flow)
 ```sh
 # Checkout Release branch from `develop`
 git checkout -b release/x.x.x
@@ -152,6 +152,7 @@ git push origin release/x.x.x
 git push origin --tags
 
 # Merge `release/x.x.x` into `master`
-git push origin --tags
+
+# Merge `release/x.x.x` into `develop`
 ```
 

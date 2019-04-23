@@ -136,8 +136,8 @@ npm run build
 
 ## Deployment
 ```sh
-# Build
-npm build
+# Checkout Release branch from `develop`
+git checkout -b release/x.x.x
 
 # Version Up
 npm version major|minor|patch
@@ -146,9 +146,12 @@ npm version major|minor|patch
 npm publish
 
 # Update master branch
-git push origin master
+git push origin release/x.x.x
 
 # Push git tags
+git push origin --tags
+
+# Merge `release/x.x.x` into `master`
 git push origin --tags
 ```
 

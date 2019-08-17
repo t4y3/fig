@@ -240,5 +240,5 @@
       ]
     }
   ],
-  "headHtml": "<link rel=\"stylesheet\" href=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.css\">\n<!-- <script src=\"https://unpkg.com/riot@3.11.2/riot.min.js\"></script> -->\n<script src=\"https://unpkg.com/riot@2.4.1/riot.min.js\"></script>\n<script src=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.js\"></script>\n<script>\n  window.addEventListener('DOMContentLoaded',function() {\n    riot.mount('*');\n  });\n</script>\n"
+  "headHtml": "<link rel=\"stylesheet\" href=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.css\">\n<!-- <script src=\"https://unpkg.com/riot@3.11.2/riot.min.js\"></script> -->\n<script src=\"https://unpkg.com/riot@2.4.1/riot.min.js\"></script>\n<script src=\"https://unpkg.com/nest-ui@0.0.9/dist/nest.js\"></script>\n<style>body { padding: 10px; }</style>\n<script>\n  window.addEventListener('DOMContentLoaded',function() {\n    riot.mount('*');\n  });\n</script>\n"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@t4y3/fig",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
     "fig-start": "bin/index.js",
@@ -35,10 +35,11 @@
   },
   "keywords": [
     "riot",
-    "styleguide"
+    "styleguide",
+    "hyperapp"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/t4y3/fig/issues"
   },
@@ -73,7 +74,7 @@
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.2",
-    "siimple": "^3.3.1",
+    "siimple": "3.1.1",
     "whatwg-fetch": "^3.0.0"
   }
 }

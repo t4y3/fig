@@ -1,6 +1,6 @@
 {
   "name": "@t4y3/fig",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
     "fig-start": "bin/index.js",

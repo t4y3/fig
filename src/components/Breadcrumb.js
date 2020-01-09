@@ -6,7 +6,7 @@ const navigateTo = (path) => {
 };
 
 const Breadcrumb = ({ component = '', componentType = '' }) => (
-  <div className="siimple-breadcrumb">
+  <div className="siimple-breadcrumb fig-breadcrumb">
     <div className="siimple-breadcrumb-item" onclick={navigateTo.bind(this, '/')}>
       Home
     </div>

@@ -1,6 +1,6 @@
 {
   "name": "@t4y3/fig",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Fig - library for gallery of Riot tag",
   "bin": {
     "fig-start": "bin/index.js",
@@ -48,6 +48,13 @@
     "url": "https://github.com/t4y3/fig/issues"
   },
   "homepage": "https://github.com/t4y3/fig#readme",
+  "files": [
+    "README.md",
+    "package.json",
+    "bin/index.js",
+    "bin/build.js",
+    "infig/main.js"
+  ],
   "dependencies": {
     "browser-sync": "^2.26.7",
     "fs-extra": "^8.1.0"

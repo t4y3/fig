@@ -33,16 +33,14 @@ const Opts = ({ opts = {} }) => {
       <div className="siimple-table siimple-table--border">
         <div className="siimple-table-header">
           <div className="siimple-table-row">
-            <div className="siimple-table-cell siimple--width-25">Opts Name</div>
-            <div className="siimple-table-cell siimple--width-75">Value</div>
+            <div className="siimple-table-cell">Value</div>
           </div>
         </div>
         <div className="siimple-table-body">
-          {Object.keys(opts).map(key => (
+          {Object.keys(opts).map((key) => (
             <div className="siimple-table-row">
-              <div className="siimple-table-cell siimple--width-25">{key}</div>
               <div
-                className="siimple-table-cell siimple--width-75"
+                className="siimple-table-cell"
                 oncreate={(e) => {
                   format(e, opts[key], key);
                 }}
